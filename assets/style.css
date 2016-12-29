@@ -5,6 +5,15 @@ nav{
 	width: 100%;
 	list-style-type: none;
 }
+header{
+	font-size: 32px;
+	letter-spacing: 1px;
+	margin-left: 5px;
+	font-weight: bold;
+	border-bottom: 5px solid rgba(252, 174, 41, 0.95);;
+	width: 70%;
+	font-family: 'Oswald', sans-serif;
+}
 .upper-navbar{
 	height: 125px;
 	background-color: #464646;

@@ -12,10 +12,11 @@ header{
 	font-weight: bold;
 	border-bottom: 5px solid rgba(252, 174, 41, 0.95);;
 	width: 70%;
+	margin-top: 10px;
 	font-family: 'Oswald', sans-serif;
 }
 .upper-navbar{
-	height: 125px;
+	height: 140px;
 	background-color: #464646;
 }
 .lower-navbar{
@@ -36,6 +37,30 @@ li{
 	height: 100%;
 	float: left;
 }
+.logo-navbar{
+	width: 55%
+}
+.logo-image{
+	width: 100%;
+}
+.logo-nav{
+	margin-top: 5px;
+height: 25px;
+width: 100%;
+}
+.logo-nav-element{
+	font-weight: bold;
+	font-family: 'Oswald', sans-serif;
+	font-size: 14px;
+	border-right: 1px solid rgba(0, 0, 0, 0.6);
+	float: left;
+	color: white;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+@media screen and (max-width: 1024px) {
+    .logo-navbar{width: 70% !important;}
+}
 .cart{
 	float: left;
 	width: 25%;
@@ -47,12 +72,15 @@ li{
 }
 .slider-background{
 	background-color: #717171;
-	margin-bottom: 10px;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
 }
 .index-slider{
 
-	height: 260px;
+	height: 430px;
 	background-color: green;
+	overflow: hidden;
+	padding: 0;
 
 }
 .product-data-box{
@@ -64,7 +92,7 @@ li{
 }
 .product-data-photo{
 	width: 100%;
-	background-color: #f6f6f6;
+	background-color: transparent;
 	height: 80%;
 	overflow: hidden;
 	border: 1px solid rgba(0, 0, 0, 0.1);

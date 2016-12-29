@@ -7,10 +7,10 @@
 <body>
 <div class="container-fluid slider-background">
 	<div class="container index-slider">
-
+	<img src="https://scontent-waw1-1.xx.fbcdn.net/v/t31.0-8/12314276_10153224858400205_5321206216073306625_o.jpg?oh=7905170b002fd7174f7d72f64ad322e8&oe=58E6E630" width="100%">
 	</div>
 </div>
-<div class="container-fluid" style="background-color: #f6f6f6;">
+<div class="container-fluid" style="background-color: #f6f6f6; padding-bottom: 10px;">
 	<div class="container">
 	<div class="row">
 	<header>PROMOCJE</header>
@@ -35,8 +35,54 @@
 </div>
 </div>
 
-<div class="container-fluid" style="background-color: #494949; height: 200px;">
+<div class="container-fluid" style="background-image: url(<?= base_url().'assets/background-second.png' ?>); padding-bottom: 10px;">
+	<div class="container">
+		<div class="row">
+			<header style="color: #F6F6F6">NOWOŚCI W MAGAZYNACH</header>
 
+			<?php for ($i=1; $i <=12 ; $i++) { ?>
+			<div class="col-sm-4 col-md-3" style="padding: 5px;">
+			<div class="product-data-box">
+				<div class="product-data-photo">
+					<img src="http://efabrykamocy.pl/userdata/gfx/cdf2bc18b08fffcfe2e1d63e2b2e26a4.jpg" width="100%" height="120%">
+					<div class="discount">
+					-5%
+					</div>
+				</div>
+				<div class="product-data-title">
+					RĘKAWICE BOKSERSKIE ADIDAS PRO AIR
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<img src="https://scontent-waw1-1.xx.fbcdn.net/v/t31.0-8/12314276_10153224858400205_5321206216073306625_o.jpg?oh=7905170b002fd7174f7d72f64ad322e8&oe=58E6E630" width="100%">
+</div>
+<div class="container-fluid" style="background-color: #ABCBEB; padding-bottom: 10px;">
+	<div class="container">
+		<div class="row">
+			<header style="color: #414141">REKOMENDOWANE WŚRÓD KLIENTÓW</header>
+
+			<?php for ($i=1; $i <=12 ; $i++) { ?>
+			<div class="col-sm-4 col-md-3" style="padding: 5px;">
+			<div class="product-data-box">
+				<div class="product-data-photo">
+					<img src="http://efabrykamocy.pl/userdata/gfx/cdf2bc18b08fffcfe2e1d63e2b2e26a4.jpg" width="100%" height="120%">
+					<div class="discount">
+					-5%
+					</div>
+				</div>
+				<div class="product-data-title">
+					RĘKAWICE BOKSERSKIE ADIDAS PRO AIR
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+		</div>
+	</div>
 </div>
 </body>
 </html>

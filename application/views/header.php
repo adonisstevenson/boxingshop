@@ -25,7 +25,25 @@
 <nav class="upper-navbar">
     <div class="container">
         <div class="logo">
-
+            <div class="logo-navbar">
+                <div class="logo-image">
+                    <img src=<?= base_url().'assets/logo.png' ?> width="100%">
+                </div>
+                <div class="logo-nav">
+                    <div class="logo-nav-element" style="padding-left: 0 !important">
+                        FIRMA
+                    </div>
+                    <div class="logo-nav-element">
+                        KONTAKT
+                    </div>
+                    <div class="logo-nav-element">
+                        WSPÓŁPRACA
+                    </div>
+                    <div class="logo-nav-element" style="border-right: 0 !important">
+                        LOKALIZACJA
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="cart">
             <i class="material-icons" style="font-size: 80px; color: #D9B443">shopping_cart</i>

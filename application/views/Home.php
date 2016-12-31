@@ -64,7 +64,7 @@
 <div class="container-fluid" style="background-color:#6294C7 ; padding-bottom: 10px;">
 	<div class="container">
 		<div class="row">
-			<header style="color: #565656">REKOMENDOWANE WŚRÓD KLIENTÓW</header>
+			<header style="color: #F6F6F6">REKOMENDOWANE WŚRÓD KLIENTÓW</header>
 
 			<?php for ($i=1; $i <=12 ; $i++) { ?>
 			<div class="col-sm-4 col-md-3" style="padding: 5px;">

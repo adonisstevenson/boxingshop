@@ -46,7 +46,7 @@
             </div>
         </div>
         <div class="cart">
-            <i class="material-icons" style="font-size: 80px; color: white; width: 100%;">shopping_cart</i>
+            <i class="material-icons" style="font-size: 65px; color: white; width: 100%;">shopping_cart</i>
             <div class="cart-items">
                 2<br>
                 <span style="font-size: 14px; font-weight: 100">100zł</span>

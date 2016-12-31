@@ -61,7 +61,7 @@
 		<img src="https://scontent-waw1-1.xx.fbcdn.net/v/t31.0-8/12314276_10153224858400205_5321206216073306625_o.jpg?oh=7905170b002fd7174f7d72f64ad322e8&oe=58E6E630" width="100%">
 	</div>
 </div>
-<div class="container-fluid" style="background-color:#6294C7 ; padding-bottom: 10px;">
+<div class="container-fluid" style="background-image: url(<?= base_url().'assets/background-third.png' ?>); ; padding-bottom: 10px;">
 	<div class="container">
 		<div class="row">
 			<header style="color: #F6F6F6">REKOMENDOWANE WŚRÓD KLIENTÓW</header>

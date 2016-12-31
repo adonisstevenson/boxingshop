@@ -6,7 +6,21 @@
 </head>
 <body>	
 <div class="container slider-box">
-
+	<div class="arrow left" onclick="slideleft()">
+		<i class="material-icons" style="font-size:60px">keyboard_arrow_left</i>
+	</div>
+	<div class="arrow right" OnClick="slideright()">
+		<i class="material-icons" style="font-size:60px">keyboard_arrow_right</i>
+	</div>
+	<div class="slider-position" id="slide-1">
+		<img src="https://scontent.fwaw3-1.fna.fbcdn.net/v/t1.0-9/12821599_482337451958303_3367642505180656671_n.jpg?oh=c548e9ba1ef2c98e607eb4d4e097ffb1&oe=591C0234" width="100%" height="100%">
+	</div>
+	<div class="slider-position" id="slide-2">
+		<img src="https://scontent.fwaw3-1.fna.fbcdn.net/v/t1.0-9/10013869_403284293196953_5458285982848776384_n.jpg?oh=42e51a138a1f1b8717b5c9f48056fcae&oe=591EA34D" width="100%" height="100%">
+	</div>
+	<div class="slider-position" id="slide-3">
+		
+	</div>
 </div>
 <div class="container-fluid" style="background-color: #f6f6f6;">
 	<div class="container">

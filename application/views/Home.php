@@ -5,16 +5,8 @@
 <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 </head>
 <body>
-<div class="container-fluid slider-background">
-	<div class="container index-slider">
-	<img src="https://scontent-waw1-1.xx.fbcdn.net/v/t31.0-8/12314276_10153224858400205_5321206216073306625_o.jpg?oh=7905170b002fd7174f7d72f64ad322e8&oe=58E6E630" width="100%">
-	</div>
-</div>
-<div class="container-fluid" style="background-color: #f6f6f6; padding-bottom: 10px;">
-	<div class="container">
-	<div class="row">
-	<header>PROMOCJE</header>
-		<?php for ($i=1; $i <=12 ; $i++) { ?>
+<header>PROMOCJE</header>		
+<?php for ($i=1; $i <=12 ; $i++) { ?>
 			<div class="col-sm-4 col-md-3" style="padding: 5px;">
 			<div class="product-data-box">
 				<div class="product-data-photo">
@@ -58,7 +50,7 @@
 		</div>
 	</div>
 </div>
-<div class="container">
+<div class="container" style="overflow: hidden; height: 475px">
 	<img src="https://scontent-waw1-1.xx.fbcdn.net/v/t31.0-8/12314276_10153224858400205_5321206216073306625_o.jpg?oh=7905170b002fd7174f7d72f64ad322e8&oe=58E6E630" width="100%">
 </div>
 <div class="container-fluid" style="background-color: #ABCBEB; padding-bottom: 10px;">

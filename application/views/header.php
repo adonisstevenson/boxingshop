@@ -30,25 +30,27 @@
                     <img src=<?= base_url().'assets/logo.png' ?> width="100%">
                 </div>
                 <div class="logo-nav">
-                    <div class="logo-nav-element" style="padding-left: 0 !important">
+                    <a class="logo-nav-element" href=<?= base_url().'firma' ?> style="padding-left: 0 !important">
                         FIRMA
-                    </div>
-                    <div class="logo-nav-element">
+                    </a>
+                    <a class="logo-nav-element" href=<?= base_url().'kontakt' ?>>
                         KONTAKT
-                    </div>
-                    <div class="logo-nav-element">
+                    </a>
+                    <a class="logo-nav-element" href=<?= base_url().'wspolpraca' ?>>
                         WSPÓŁPRACA
-                    </div>
-                    <div class="logo-nav-element" style="border-right: 0 !important">
+                    </a>
+                    <a class="logo-nav-element" href=<?= base_url().'lokalizacja' ?> style="border-right: 0 !important">
                         LOKALIZACJA
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
         <div class="cart">
-            <i class="material-icons" style="font-size: 80px; color: #D9B443">shopping_cart</i>
-            <br>
-            <span style="color: #F1F1F1"> 2 </span>
+            <i class="material-icons" style="font-size: 80px; color: white; width: 100%;">shopping_cart</i>
+            <div class="cart-items">
+                2<br>
+                <span style="font-size: 14px; font-weight: 100">100zł</span>
+            </div>
         </div>
     </div>
 </nav>

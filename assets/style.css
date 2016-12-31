@@ -1,5 +1,5 @@
 body{
-	background-color: #F6F6F6;
+	background-color:white;
 }
 nav{
 	width: 100%;
@@ -28,7 +28,9 @@ li{
 	color: white;
 	font-weight: bold;
 	font-size: 18px;
-	padding: 10px;
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
 	font-family: 'Oswald', sans-serif;
 	letter-spacing: 2px;
 }
@@ -49,6 +51,7 @@ height: 25px;
 width: 100%;
 }
 .logo-nav-element{
+	text-decoration: none;
 	font-weight: bold;
 	font-family: 'Oswald', sans-serif;
 	font-size: 14px;
@@ -57,6 +60,10 @@ width: 100%;
 	color: white;
 	padding-left: 5px;
 	padding-right: 5px;
+}
+.logo-nav-element:hover{
+	color: white;
+	text-decoration: none;
 }
 @media screen and (max-width: 1024px) {
     .logo-navbar{width: 70% !important;}
@@ -67,19 +74,21 @@ width: 100%;
 	border-left: 2px solid #D7D7D7;
 	text-align: center;
 	font-size: 28px;
+	background-color: orange;
 	font-weight: bold;
 	height: 100%;
 }
-.slider-background{
-	background-color: #717171;
-	padding-left: 0 !important;
-	padding-right: 0 !important;
+.cart-items{
+	text-align: center;
+	width: 100%;
+	color: #F6F6F6;
 }
 .index-slider{
 
-	height: 430px;
+	height: 600px;
 	background-color: green;
 	overflow: hidden;
+	width: 100%;
 	padding: 0;
 
 }

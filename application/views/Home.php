@@ -6,7 +6,26 @@
 </head>
 <body>	
 <div class="container slider-box">
-
+	<div class="slider">
+		<div class="arrow arrow-right" onclick="slideright()">
+			<i class="material-icons" style="font-size: 60px">keyboard_arrow_right</i>
+		</div>
+		<div class="arrow arrow-left" onclick="slideleft()">
+			<i class="material-icons" style="font-size: 60px">keyboard_arrow_left</i>
+		</div>
+		<div class="slide slide-1">
+			1
+		</div>
+		<div class="slide slide-2">
+			2
+		</div>
+		<div class="slide slide-3">
+			3
+		</div>
+		<div class="slide slide-4">
+			4
+		</div>
+	</div>
 </div>
 <div class="container-fluid" style="background-color: #f6f6f6;">
 	<div class="container">

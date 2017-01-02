@@ -25,7 +25,6 @@
 		<div class="slide slide-4">
 			4
 		</div>
-	</div>
 </div>
 <div class="container-fluid" style="background-color: #f6f6f6;">
 	<div class="container">

@@ -1,7 +1,7 @@
+
 var slide = 2; // first slide
 
-function moveforward(current, next
-	){
+function moveforward(current, next){
 		var left = $('.slide-'+current).css('left');
 
 		if(left == '0px'){ // if previous slide will be on right place (not in way);
@@ -111,4 +111,3 @@ function slideleft(){
 	}
 
 }
-

@@ -52,6 +52,7 @@ width: 100%;
 }
 .slider-box{
 	height: 520px;
+<<<<<<< HEAD
 	padding: 0;
 }
 .slide{
@@ -96,6 +97,44 @@ width: 100%;
 	background-color: silver;
 	overflow: hidden;
 
+=======
+	background-color: gray;
+	position: relative;
+	overflow: hidden;
+}
+.slider-position{
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 520px;
+	width:100%;
+	overflow: hidden;
+}
+#slide-2{
+	background-color: green;
+	z-index: 99;
+}
+#slide-1{
+	background-color: red;
+	z-index: 100;
+	left: 0;
+}
+#slide-3{
+	background-color: blue;
+	z-index: 98;
+}
+.arrow{
+	position: absolute;
+	top: 45%;
+	z-index: 110;
+}
+.left{
+	left: 0;
+}
+.right{
+	right: 0;
+>>>>>>> origin/master
 }
 .logo-nav-element{
 	text-decoration: none;

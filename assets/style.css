@@ -203,16 +203,24 @@ width: 100%;
 	border: 1px solid rgba(0, 0, 0, 0.1);
 	position: relative;
 }
-.category-data-title{
-	width: 100%;
-	padding: 2px;
-	font-size: 18px;
-	font-weight: bold;
-	max-height: 20%;
-	line-height: 250%;
-	text-align: center;
-	font-family: 'Roboto', sans-serif;
-	letter-spacing: 1px;
+.category-box{
+	position: relative;
+	overflow: hidden;
+	max-height: 350px;
+	overflow: hidden;
+}
+.category-title{
+position: absolute;
+top: 40%;
+width: 100%;
+left: 0;
+text-align: center;
+font-size: 32px;
+color: white;
+font-weight: bold;
+font-family: 'Oswald', sans-serif;
+letter-spacing: 2px;
+text-shadow: -1px -1px 6px rgba(25, 25, 25, 1);
 }
 .discount{
 	position: absolute;

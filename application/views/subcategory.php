@@ -5,116 +5,67 @@
 <body>
 	<div class="container">
 		<div class="row">
-				<div class="well">
-				<header class="clearborder">PODKATEGORIE</header>
+				<header class="clearborder">OCHRANIACZE</header>
 				<?php if($category == 'training'){ ?>
-					<div class="col-md-3 col-sm-4" style="padding: 5px;">
-					<div class="product-data-box">
-						<div class="category-data-title">
+				<div class="col-sm-4 category-box">
+						<img src="http://efabrykamocy.pl/userdata/gfx/cdf2bc18b08fffcfe2e1d63e2b2e26a4.jpg" width="100%">
+						<div class="category-title">
 							RĘKAWICE
 						</div>
-						<div class="product-data-photo clearborder">
-							<img src="http://efabrykamocy.pl/userdata/gfx/cdf2bc18b08fffcfe2e1d63e2b2e26a4.jpg" width="85%">
-						</div>
 					</div>
-				</div>
-				<div class="col-md-3 col-sm-4" style="padding: 5px;">
-					<div class="product-data-box">
-						<div class="category-data-title">
-							RĘKAWICE
-						</div>
-						<div class="product-data-photo clearborder">
-							<img src="http://efabrykamocy.pl/userdata/gfx/cdf2bc18b08fffcfe2e1d63e2b2e26a4.jpg" width="85%">
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-4" style="padding: 5px;">
-					<div class="product-data-box">
-						<div class="category-data-title">
-							BANDAŻE BOKSERSKIE
-						</div>
-						<div class="product-data-photo clearborder">
-							<img src="http://efabrykamocy.pl/userdata/gfx/cdf2bc18b08fffcfe2e1d63e2b2e26a4.jpg" width="85%">
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-4" style="padding: 5px;">
-					<div class="product-data-box">
-						<div class="category-data-title">
-							TAŚMY I AKCESORIE
-						</div>
-						<div class="product-data-photo clearborder">
-							<img src="http://efabrykamocy.pl/userdata/gfx/cdf2bc18b08fffcfe2e1d63e2b2e26a4.jpg" width="85%">
-						</div>
-					</div>
-				</div>
 				<?php }elseif($category == "defense"){ ?>
-
-					<div class="col-md-3 col-sm-4" style="padding: 5px;">
-						<div class="product-data-box">
-							<div class="category-data-title">
-								SUSPENSORY
-							</div>
-							<div class="product-data-photo clearborder">
-								<img src="http://efabrykamocy.pl/userdata/gfx/cdf2bc18b08fffcfe2e1d63e2b2e26a4.jpg" width="85%">
-							</div>
+					<div class="col-sm-4 category-box">
+						<img src="http://disport.pl/10025-17469-thickbox/pojedynczy-ochraniacz-na-zeby-allright.jpg" width="100%">
+						<div class="category-title">
+							SZCZĘKI
+						</div>
+					</div>
+					<div class="col-sm-4 category-box">
+						<img src="http://image.ceneo.pl/data/products/31186754/i-adidas-suspensor-ochraniacz-krocza-pu3g-adibp05.jpg" width="100%">
+						<div class="category-title">
+							SUSPENSORIUM
+						</div>
+					</div>
+					<div class="col-sm-4 category-box">
+						<img src="http://mmaniak.pl/7270-thickbox_default/venum-ochraniacze-piszczelistopy-kontact.jpg" width="100%">
+						<div class="category-title">
+							PISZCZELE
+						</div>
+					</div>
+					<div class="col-sm-4 category-box">
+						<img src="http://rowerowy.interbikes.eu/file/46244/fox-ochraniacz-kolana-launch-pro-knee-junior.jpg" width="100%">
+						<div class="category-title">
+							KOLANA
 						</div>
 					</div>
 				<?php }elseif($category == "shoes"){ ?>
-					<div class="col-md-3 col-sm-4" style="padding: 5px;">
-						<div class="product-data-box">
-							<div class="category-data-title">
-								BUTY BOKSERSKIE
-							</div>
-							<div class="product-data-photo clearborder">
-								<img src="http://efabrykamocy.pl/userdata/gfx/cdf2bc18b08fffcfe2e1d63e2b2e26a4.jpg" width="85%">
-							</div>
+					<div class="col-sm-4 category-box">
+						<img src="http://rowerowy.interbikes.eu/file/46244/fox-ochraniacz-kolana-launch-pro-knee-junior.jpg" width="100%">
+						<div class="category-title">
+							BUTY BOKSERSKIE
 						</div>
 					</div>
 				<?php }elseif($category == "clothes"){ ?>
-					<div class="col-md-3 col-sm-4" style="padding: 5px;">
-						<div class="product-data-box">
-							<div class="category-data-title">
-								RUSHGUARDY
-							</div>
-							<div class="product-data-photo clearborder">
-								<img src="http://efabrykamocy.pl/userdata/gfx/cdf2bc18b08fffcfe2e1d63e2b2e26a4.jpg" width="85%">
-							</div>
+					<div class="col-sm-4 category-box">
+						<img src="http://rowerowy.interbikes.eu/file/46244/fox-ochraniacz-kolana-launch-pro-knee-junior.jpg" width="100%">
+						<div class="category-title">
+							RUSHGUARDY
 						</div>
 					</div>
-					<div class="col-md-3 col-sm-4" style="padding: 5px;">
-						<div class="product-data-box">
-							<div class="category-data-title">
-								BLUZY
-							</div>
-							<div class="product-data-photo clearborder">
-								<img src="http://efabrykamocy.pl/userdata/gfx/cdf2bc18b08fffcfe2e1d63e2b2e26a4.jpg" width="85%">
-							</div>
+					<div class="col-sm-4 category-box">
+						<img src="http://rowerowy.interbikes.eu/file/46244/fox-ochraniacz-kolana-launch-pro-knee-junior.jpg" width="100%">
+						<div class="category-title">
+							BLUZY
 						</div>
 					</div>
-					<div class="col-md-3 col-sm-4" style="padding: 5px;">
-						<div class="product-data-box">
-							<div class="category-data-title">
-								SPODENKI TRENINGOWE
-							</div>
-							<div class="product-data-photo clearborder">
-								<img src="http://efabrykamocy.pl/userdata/gfx/cdf2bc18b08fffcfe2e1d63e2b2e26a4.jpg" width="85%">
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-4" style="padding: 5px;">
-						<div class="product-data-box">
-							<div class="category-data-title">
-								CZAPKI
-							</div>
-							<div class="product-data-photo clearborder">
-								<img src="http://efabrykamocy.pl/userdata/gfx/cdf2bc18b08fffcfe2e1d63e2b2e26a4.jpg" width="85%">
-							</div>
+					<div class="col-sm-4 category-box">
+						<img src="http://rowerowy.interbikes.eu/file/46244/fox-ochraniacz-kolana-launch-pro-knee-junior.jpg" width="100%">
+						<div class="category-title">
+							CZAPKI
 						</div>
 					</div>
 				<?php } ?>
 				<div style="clear: both;"></div>
-			</div>
 		</div>
 		<div class="row">
 			<header>POLECANE W TEJ KATEGORII</header>

@@ -23,5 +23,10 @@ class Products_Model extends CI_Model
 		parent::__construct();
 	}
 
-	
+	public function getElementsByCategory($category){
+
+		$query = $this->db->get_where('offers', array('category' => $category), 12, 0);
+
+		return $query;
+	}
 }

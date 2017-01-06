@@ -20,6 +20,8 @@
       rel="stylesheet">
       <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
       <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 </head>
 <body>
 <nav class="upper-navbar">
@@ -27,7 +29,9 @@
         <div class="logo">
             <div class="logo-navbar">
                 <div class="logo-image">
-                    <img src=<?= base_url().'assets/logo.png' ?> width="100%">
+                    <a href=<?= base_url() ?>>
+                        <img src=<?= base_url().'assets/logo.png' ?> width="100%">
+                    </a>
                 </div>
                 <div class="logo-nav">
                     <a class="logo-nav-element" href=<?= base_url().'firma' ?> style="padding-left: 0 !important">
@@ -57,10 +61,18 @@
 <nav class="lower-navbar">
     <div class="container">
         <li><i class="material-icons">home</i></li>
-        <li>SKLEP</li> 
-        <li>FIRMA</li>
-        <li>KONTAKT</li>
-        <li>WSPÓŁPRACA</li>
+        <li>
+            <a href=<?= base_url().'ochraniacze' ?>>OCHRONA</a>
+        </li> 
+        <li>
+             <a href=<?= base_url().'trening' ?>>TRENING</a>
+        </li>
+        <li>
+             <a href=<?= base_url().'obuwie' ?>>OBUWIE</a>
+        </li>
+        <li>
+             <a href=<?= base_url().'odziez' ?>>ODZIEŻ</a>
+        </li>
 
         <li style="float: right;"><i class="material-icons">person_outline</i></li>
         <li style="float: right;"><i class="material-icons">search</i></li>

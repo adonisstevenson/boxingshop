@@ -5,14 +5,25 @@
 <body>
 	<div class="container">
 		<div class="row">
-				<header class="clearborder">OCHRANIACZE</header>
 				<?php if($category == 'training'){ ?>
 				<div class="col-sm-4 category-box">
 						<img src="http://efabrykamocy.pl/userdata/gfx/cdf2bc18b08fffcfe2e1d63e2b2e26a4.jpg" width="100%">
 						<div class="category-title">
 							RĘKAWICE
 						</div>
-					</div>
+				</div>
+				<div class="col-sm-4 category-box">
+						<img src="http://fitfight.pl/pol_pl_Skakanka-bokserska-stalowa-260-cm-1857_2.jpg" width="100%">
+						<div class="category-title">
+							SKAKANKI
+						</div>
+				</div>
+				<div class="col-sm-4 category-box">
+						<img src="http://www.gopower.pl/3517-home_default/cm04-niebiesko-szary-ciezarki-miekkie-2-x-1-kg.jpg" width="100%">
+						<div class="category-title">
+							CIĘŻARKI
+						</div>
+				</div>
 				<?php }elseif($category == "defense"){ ?>
 					<div class="col-sm-4 category-box">
 						<img src="http://disport.pl/10025-17469-thickbox/pojedynczy-ochraniacz-na-zeby-allright.jpg" width="100%">
@@ -72,12 +83,14 @@
 			<?php foreach($productsCategory->result() as $product){ ?>
 			<div class="col-sm-4 col-md-3" style="padding: 5px;">
 			<div class="product-data-box">
-				<div class="product-data-photo">
-					<img src="http://efabrykamocy.pl/userdata/gfx/cdf2bc18b08fffcfe2e1d63e2b2e26a4.jpg" width="85%">
-				</div>
-				<div class="product-data-title">
-					<?= strtoupper($product->title) ?>
-				</div>
+				<a href=<?= base_url().'produkty/'.urlencode($product->title) ?>>
+					<div class="product-data-photo">
+						<img src=<?= $product->photo ?> width="80%">
+					</div>
+					<div class="product-data-title">
+						<?= strtoupper($product->title) ?>
+					</div>
+				</a>
 			</div>
 		</div>
 			<?php } ?>

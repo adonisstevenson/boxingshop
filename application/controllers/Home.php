@@ -63,4 +63,13 @@ class Home extends CI_Controller {
 			$this->load->view('subcategory', $data);
 		}
 	}
+
+	public function show($product){
+		if($data['query'] = $this->products->getOfferInfoByName($product)){
+			$data['quantity'] = $this->products->getProductQuantityByTitle($product);
+
+			$this->load->view('header', $data);
+			$this->load->view('productShow');
+		}else show_404();
+	}
 }

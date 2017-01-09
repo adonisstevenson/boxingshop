@@ -4,7 +4,7 @@
 </head>
 <body>
 	<div class="container">
-		<header style="border-bottom: none"><?= $query->title ?></header>
+		<header style="border-bottom: none; padding-left: 10px;"><?= $query->title ?></header>
 		<div class="col-sm-5 product-photo">
 			<img src=<?= $query->photo ?> width="100%">
 		</div>

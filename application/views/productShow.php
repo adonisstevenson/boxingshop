@@ -33,8 +33,8 @@
 						<div class="cart-flex">
 							<i class="material-icons icon-large">add_shopping_cart</i>
 							<form>
-								<input type="text" name="quantity" class="cart-quantity form-control" value="1"></input>
-								<input type="submit" class="btn btn-primary" value="Do koszyka"></input>
+								<input type="text" name="quantity" class="cart-quantity form-control" value="1"></input><br><br>
+								<input type="submit" class="btn btn-primary" value="+"></input>
 							</form>
 							<div style="clear: both;"></div>
 						</div>
@@ -47,29 +47,23 @@
 		<div class="col-sm-12">
 			<header class="clearbottom">OPINIE</header>
 			<div class="opinion-box">
+				<?php if($comments->num_rows() > 0 ){ ?>
+				<?php foreach($comments->result() as $comment){ ?>
 				<div class="opinion">
 					<div class="opinion-user">
 					<img src="http://vignette3.wikia.nocookie.net/the-enigma-corporation/images/0/01/Users-User-icon.png/revision/latest?cb=20140213102228" width="60px">
-					Adonis
+					<?= $comment->author; ?>
 				</div>
 				<div class="opinion-content">
 					<div class="opinion-content-date">10-01-2017</div>
-					uważem, że uważem, że uważem, że uważem, że uważem, że uważem, że uważem, że uważem, że uważem, że uważem, że uważem, że
+					<?= $comment->comment; ?>
 				</div>
 				<div style="clear: both;"></div>
 				</div>
-				<div class="opinion">
-					<div class="opinion-user">
-					<img src="http://vignette3.wikia.nocookie.net/the-enigma-corporation/images/0/01/Users-User-icon.png/revision/latest?cb=20140213102228" width="60px">
-					Adonis
-				</div>
-				<div class="opinion-content">
-					<div class="opinion-content-date">10-01-2017</div>
-					uważem, że uważem, że uważem, że uważem, że uważem, że uważem, że uważem, że uważem, że uważem, że uważem, że uważem, że
-					fsdf asd asdasdsa dsad sad sad 
-				</div>
-				<div style="clear: both;"></div>
-				</div>
+
+				<?php }}else{ ?>
+					<i>Nie ma żadnych opinii dla tego produktu</i>
+				<?php } ?>
 			</div>
 		</div>	
 	</div>

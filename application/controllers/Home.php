@@ -67,6 +67,7 @@ class Home extends CI_Controller {
 	public function show($product){
 		if($data['query'] = $this->products->getOfferInfoByName($product)){
 			$data['quantity'] = $this->products->getProductQuantityByTitle($product);
+			$data['comments'] = $this->products->getOfferCommentsByTitle($product);
 
 			$this->load->view('header', $data);
 			$this->load->view('productShow');

@@ -42,14 +42,32 @@ class Products_Model extends CI_Model
 
 	public function getProductQuantityByTitle($title){
 		//getting the id of offer by title
-		$this->db->select('id');
-		$query = $this->db->get_where('offers', array('title'=>urldecode($title)))->row();
-		$offer_id = $query->id;
+		$offer_id = $this->getOfferIdByTitle(urldecode($title));
 
 		$this->db->where('offer_id', $offer_id);
 		$this->db->from('products');
 
 		$result = $this->db->count_all_results();
 		return $result;
+	}
+
+	public function getOfferIdByTitle($title){
+		$title = urldecode($title);
+
+		$query = $this->db->get_where('offers', array('title'=>$title))->row();
+		$offer_id = $query->id;
+
+		return $offer_id;
+	}
+
+	public function getOfferCommentsByTitle($title){
+
+		$id = $this->getOfferIdByTitle(urldecode($title));
+
+
+		$comments = $this->db->get_where('comments', array('offer_id'=>$id));
+
+		return $comments;
+
 	}
 }

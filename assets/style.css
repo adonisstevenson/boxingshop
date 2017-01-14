@@ -26,6 +26,7 @@ header{
 	height: 125px;
 	background-color: #464646;
 }
+
 .lower-navbar{
 	height: 45px;
 		margin-bottom: 20px;
@@ -285,12 +286,13 @@ z-index: 99999;
 	width: 100%;
 	overflow: hidden;
 }
+.paddingleft{padding-left: 5 !important;}
+.paddingright{padding-right: 5 !important;}
 .product-photo-list-element{
 	float: left;
 	width: 20%;
 	height: 100px;
-	padding-left: 5px;
-	padding-right: 5px;
+	overflow: hidden;
 }
 .opinion-box{
 	width: 100%;

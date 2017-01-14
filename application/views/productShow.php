@@ -8,19 +8,19 @@
 		<div class="col-sm-5 product-photo">
 			<img src=<?= $query->photo ?> width="100%">
 			<div class="product-photo-list">
-				<div class="product-photo-list-element">
+				<div class="product-photo-list-element paddingright">
 					<img src="http://seka-sports.com/image/cache/data/ADIBT01-RD-1-500x500.jpg" width="100%">
 				</div>
-				<div class="product-photo-list-element">
+				<div class="product-photo-list-element paddingright">
 					<img src="http://seka-sports.com/image/cache/data/ADIBT01-RD-1-500x500.jpg" width="100%">
 				</div>
-				<div class="product-photo-list-element">
+				<div class="product-photo-list-element paddingright">
 					<img src="http://seka-sports.com/image/cache/data/ADIBT01-RD-1-500x500.jpg" width="100%">
 				</div>
-				<div class="product-photo-list-element">
+				<div class="product-photo-list-element paddingright">
 					<img src="http://seka-sports.com/image/cache/data/ADIBT01-RD-1-500x500.jpg" width="100%">
 				</div>
-				<div class="product-photo-list-element">
+				<div class="product-photo-list-element paddingleft">
 					<img src="http://seka-sports.com/image/cache/data/ADIBT01-RD-1-500x500.jpg" width="100%">
 				</div>
 				<div style="clear: both;"></div>

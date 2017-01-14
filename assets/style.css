@@ -5,6 +5,38 @@ nav{
 	width: 100%;
 	list-style-type: none;
 }
+.sticky {
+  position: fixed;
+  width: 100%;
+  top:0;
+  left: 0;
+  z-index: 150;
+  border-top: 0;
+}
+.scrolltop{
+	width:100px; 
+	height:130px;
+	padding:10px; 
+	text-align:center; 
+	background: whiteSmoke;
+	font-weight: bold;
+	text-decoration: none;
+	position:fixed;
+	width: 65px;
+	height: 65px;
+	border-radius: 40px;
+	background-color: rgba(80,80,80, 0.3) ;
+	bottom:50px;
+	right:40px;
+	display:none;
+}
+.scrolltop:hover{
+	text-decoration:none;
+}
+.scrolltop a{
+	color: black;
+	text-decoration: none;
+}
 header{
 	font-size: 32px;
 	letter-spacing: 1px;
@@ -29,9 +61,10 @@ header{
 
 .lower-navbar{
 	height: 45px;
-		margin-bottom: 20px;
+	margin-bottom: 20px;
 	background-color: #1F1F1F;
 }
+
 li{
 	float: left;
 	color: white;
@@ -47,6 +80,7 @@ li a, li a:hover{
 	color: white;
 	text-decoration: none;
 }
+
 .logo{
 	width: 70%;
 	height: 100%;
@@ -171,7 +205,7 @@ width: 100%;
 	font-size: 28px;
 	background-color: orange;
 	font-weight: bold;
-	height: 100%;
+	height: 125px;
 }
 
 .cart-items{
@@ -261,10 +295,7 @@ width: 100%;
 /* product show */
 
 .product-photo{
-z-index: 99999;
-}
-.product-data{
-
+	z-index: 99999;
 }
 .icon-large{
 	font-size: 80px !important;

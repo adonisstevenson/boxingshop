@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html>
 <head>
 		<title><?= $title ?></title>
@@ -24,6 +24,9 @@
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 </head>
 <body>
+<div class="scrolltop">
+    <a href="#"><i class="fa fa-angle-up fa-3x" aria-hidden="true"></i></a>
+</div>
 <nav class="upper-navbar">
     <div class="container">
         <div class="logo">

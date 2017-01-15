@@ -59,5 +59,7 @@ $route['obuwie'] = 'Home/shoes';
 $route['obuwie/(:any)'] = 'Home/shoes/$1';
 $route['odziez'] = 'Home/clothes';
 $route['odziez/(:any)'] = 'Home/clothes/$1';
+$route['auth']['post'] = 'Home/auth';
+$route['wyloguj'] = 'Home/logout';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

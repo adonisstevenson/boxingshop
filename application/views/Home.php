@@ -51,7 +51,7 @@
 </div>
 </div>
 
-<div class="container-fluid" style="background-image: url(<?= base_url().'assets/background-second.png' ?>); padding-bottom: 10px;">
+<div class="container-fluid" style="background-image: url(<?= base_url().'assets/background-second.png' ?>); padding-bottom: 10px; z-index:1;">
 	<div class="container">
 		<div class="row">
 			<header style="color: #F6F6F6">NOWOŚCI W MAGAZYNACH</header>

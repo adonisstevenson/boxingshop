@@ -56,7 +56,6 @@
             <i class="material-icons" style="font-size: 65px; color: white; width: 100%;">shopping_cart</i>
             <div class="cart-items">
                 2<br>
-                <span style="font-size: 14px; font-weight: 100">100zł</span>
             </div>
         </div>
     </div>
@@ -76,9 +75,18 @@
         <li>
              <a href=<?= base_url().'odziez' ?>>ODZIEŻ</a>
         </li>
-
-        <li style="float: right;"><i class="material-icons">person_outline</i></li>
-        <li style="float: right;"><i class="material-icons">search</i></li>
+       <?php if($this->session->has_userdata('login')){ ?> 
+        <li class="nav-icons" style="padding-left:0px"><?= $this->session->login ?></li>
+         <a href=<?= base_url().'wyloguj' ?>><li class="nav-icons"><i class="material-icons">exit_to_app</i></li></a> 
+       <?php }else{ ?>
+            <li class="nav-icons" id="navUser" ><i class="material-icons">person_outline</i></li>
+       <?php } ?>
+        <li class="nav-icons" id="navSearch"><i class="material-icons">search</i></li>
+        <form class="navUserForm" action="auth" method="POST">
+            <input type="submit" value="zaloguj" class="navFormButton"> 
+            <input type="password" name="password" value="" class="navUserForm fixWidth" placeholder="hasło">
+            <input type="text" name="login" value="" class="navUserForm fixWidth" placeholder="login">
+        </form>
     </div>
 </nav>
 

@@ -18,24 +18,30 @@ function moveforward(current, next){
 
 
 }
-
-$(document).ready(function(){
-	
-	//Check to see if the window is top if not then display button
-	$(window).scroll(function(){
-		if ($(this).scrollTop() > 100) {
-			$('.scrolltop').fadeIn();
-		} else {
-			$('.scrolltop').fadeOut();
-		}
-	});
-	
-	//Click event to scroll to top
-	$('.scrolltop').click(function(){
+$('.scrolltop').click(function(){
 		$('html, body').animate({scrollTop : 0},800);
 		return false;
 	});
-	
+
+$(document).ready(function() {
+var stickyNavTop = $('.scrolltop').offset().top;
+var windowHeight = $(window).height();
+var stickyButton = function(){
+var scrollTop = $(window).scrollTop();
+    if(scrollTop > windowHeight/2){
+		$('.scrolltop').fadeIn();
+	}else if(scrollTop < windowHeight/2){
+		$('.scrolltop').fadeOut();
+	}
+    $('.scrolltop').addClass('sticky');
+
+};
+ 
+stickyButton();
+ 
+$(window).scroll(function() {
+  stickyButton();
+});
 });
 
 function movebackward(current, next){
@@ -130,3 +136,37 @@ function slideleft(){
 	}
 
 }
+var clickedOnUser = 0;
+$('#navUser').click(function(){
+	if(clickedOnUser==0){ // if form is closed
+		OpenForm();
+		clickedOnUser=1; //tel JS that user has form opened 
+	}else{ // if form is opened
+		CloseForm();
+		clickedOnUser=0; //tel JS that user has form closed
+	}
+	
+});
+
+function OpenForm(){
+		$('#navSearch').css('display', 'none');
+		$('.navUserForm').css('display', 'block');
+		$('.fixWidth').animate({width: '150px'}, 150);
+		$('.navFormButton').animate({width: '65px'}, 150);
+
+		
+}
+function CloseForm(){
+	$('.fixWidth').animate({width: '0px'}, 150);
+	$('.navFormButton').animate({width: '0px'}, 150, function(){
+		$('#navSearch').css('display', 'block');
+		$('.navUserForm').css('display', 'none');
+	});
+
+	
+}
+
+$('#navSearch').click(function(){
+	alert("user clicked");
+});
+

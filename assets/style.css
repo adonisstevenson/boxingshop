@@ -5,16 +5,44 @@ nav{
 	width: 100%;
 	list-style-type: none;
 }
+.nav-icons{
+	float: right;
+	cursor: pointer;
+}
+.navUserForm{
+	float: right;
+	border: none;
+	border-radius: 4px;
+	padding: 4px;
+	margin-right: 6px;
+	margin-top: 2px;
+	display: none; /* do zmiany przez JS */
+}
+.fixWidth{
+	width: 1px; /* 1 domyślnie, bo przez JS zmieniane po kliknięciu 150 */
+}
+.navFormButton{
+	float: right;
+	border: none;
+	background-color: #323232;
+	color: white;
+	border: 1px solid #414141;
+	border-radius: 4px;
+	font-weight: bold;
+	margin-top: 4px;
+	width: 1px; /* 1 domyślnie, bo przez JS zmieniane po kliknięciu 65px */
+}
 .sticky {
   position: fixed;
   width: 100%;
-  top:0;
-  left: 0;
+  bottom:50px;
+  right: 40px;
   z-index: 150;
   border-top: 0;
 }
 .scrolltop{
-	width:100px; 
+	width:100px;
+	display: none;
 	height:130px;
 	padding:10px; 
 	text-align:center; 
@@ -25,10 +53,10 @@ nav{
 	width: 65px;
 	height: 65px;
 	border-radius: 40px;
-	background-color: rgba(80,80,80, 0.3) ;
+	background-color: rgba(80,80,80, 0.3);
 	bottom:50px;
 	right:40px;
-	display:none;
+	z-index: 150;
 }
 .scrolltop:hover{
 	text-decoration:none;
@@ -229,10 +257,12 @@ width: 100%;
 	text-decoration: none;
 	padding: 5px;
 	background-color: #F3F3F3;
+	z-index: 100;
 	border: 1px solid rgba(0, 0, 0, 0.2);
 }
 .product-data-photo{
 	width: 100%;
+	z-index: 100;
 	background-color: #f6f6f6;
 	overflow: hidden;
 	text-align: center;
@@ -249,6 +279,7 @@ width: 100%;
 	text-align: center;
 	font-family: 'Roboto', sans-serif;
 	letter-spacing: 1px;
+	z-index: 100;
 }
 
 .category-box{

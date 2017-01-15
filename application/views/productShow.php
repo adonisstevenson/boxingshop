@@ -69,6 +69,26 @@
 				</div>		
 			</div>	
 		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<header>PODOBNE PRODUKTY</header>
+				<?php for ($i=1; $i <=12 ; $i++) { ?>
+			<div class="col-sm-4 col-md-3" style="padding: 5px;">
+			<div class="product-data-box">
+				<div class="product-data-photo">
+					<img src="http://image.ceneo.pl/data/products/31635712/i-everlast-profesjonalne-rekawice-bokserskie-141-black.jpg" width="80%">
+					<div class="discount">
+					-5%
+					</div>
+				</div>
+				<div class="product-data-title">
+					RĘKAWICE BOKSERSKIE ADIDAS PRO AIR
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

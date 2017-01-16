@@ -90,10 +90,12 @@ class Home extends CI_Controller {
 			 $this->user->login = $this->input->post('login');
 			 $this->user->password = $this->input->post('password');
 			 if($this->user->auth()){ //if the function returns true
+			 $rank = $this->user->checkRankByName();
 			 	$userdata = array(
 					 	'login'=>$this->input->post('login'),
 						'password'=>$this->input->post('password'),
-						'logged_in'=>TRUE
+						'logged_in'=>TRUE,
+						'rank'=>$rank
 				 );
 
 				 $this->session->set_userdata($userdata);

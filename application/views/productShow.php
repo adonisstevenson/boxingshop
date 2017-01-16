@@ -76,7 +76,7 @@
 			<div class="col-sm-4 col-md-3" style="padding: 5px;">
 			<div class="product-data-box">
 				<div class="product-data-photo">
-					<img src="http://image.ceneo.pl/data/products/31635712/i-everlast-profesjonalne-rekawice-bokserskie-141-black.jpg" width="80%">
+					<img src="http://fitbay.pl/3228-3005-thickbox/skakanka-obciazenie-red-pump.jpg" width="100%">
 					<div class="discount">
 					-5%
 					</div>

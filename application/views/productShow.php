@@ -58,6 +58,9 @@
 					</div>
 					<div class="opinion-content">
 						<div class="opinion-content-date">10-01-2017</div>
+						<div class="opinionRate">
+							<i class="material-icons colorGreen">thumb_up</i>
+						</div>
 						<?= $comment->comment; ?>
 					</div>
 					<div style="clear: both;"></div>

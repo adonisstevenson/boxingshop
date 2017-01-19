@@ -62,5 +62,6 @@ $route['odziez/(:any)'] = 'Home/clothes/$1';
 $route['auth']['post'] = 'Home/auth';
 $route['wyloguj'] = 'Home/logout';
 $route['admin'] = "Admin";
+$route['opinia/(:any)']['post'] = 'Home/addOpinion/$1';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

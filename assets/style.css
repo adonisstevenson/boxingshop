@@ -75,6 +75,9 @@ header{
 	padding-top: 5px;
 	font-family: 'Oswald', sans-serif;
 }
+.headerSmaller{
+	font-size: 26px !important;
+}
 .clearborder{
 	border: none !important;
 }
@@ -239,7 +242,7 @@ width: 100%;
 .cartAbsolute{
 	top: 7px;
 	position: absolute;
-	color: #FF7F00;
+	color: #464646;
 	font-size: 20px;
 	left: 48%;
 }

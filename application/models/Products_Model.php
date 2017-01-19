@@ -16,6 +16,11 @@ class Products_Model extends CI_Model
 	public $product_id;
 	public $status;
 	public $ordered_by;
+	//opinions
+	public $id;
+	public $comment;
+	public $author;
+	public $time;
 
 
 	function __construct()
@@ -69,5 +74,9 @@ class Products_Model extends CI_Model
 
 		return $comments;
 
+	}
+
+	public function addOpinion(){
+		$insert = $this->db->insert('comments', array('offer_id'=>$this->offer_id, 'comment'=>$this->comment, 'author'=>$this->author, 'date'=>$this->time));
 	}
 }

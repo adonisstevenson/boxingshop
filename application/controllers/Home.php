@@ -120,4 +120,30 @@ class Home extends CI_Controller {
 			show_404();
 		}
 	}
+	public function addOpinion($offer_id){
+		$this->load->library('form_validation');
+
+		 $this->form_validation->set_rules('comment', 'Content of comment', 'required|min_length[5]|max_length[500]');
+
+		 if(!$this->form_validation->run()){
+			 $this->load->library('user_agent');
+
+			 $this->session->set_flashdata('opinion', 'Coś poszło nie po myśli. Upewnij się, że nie pozostawiłeś pustego pola, bądź Twój komentarz jest za długi');
+			 redirect($this->agent->referrer());
+		 }else{
+
+			 $this->products->author = $this->input->post('author');
+			 $this->products->time = $this->input->post('time');
+			 $this->products->comment = $this->input->post('comment');
+			 $this->products->offer_id = $offer_id;
+
+			 $this->products->addOpinion();
+
+			 $this->load->library('user_agent');
+			 $this->session->set_flashdata('opinion_success', 'Komentarz dodany pomyślnie. Dziękujemy za wyrażoną opinie');
+			 redirect($this->agent->referrer());
+
+		 }
+		
+	}
 }

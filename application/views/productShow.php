@@ -1,9 +1,20 @@
 <html>
 <head>
 	<title>Dadad</title>
+	
 </head>
 <body>
 	<div class="container">
+		<?php if($this->session->has_userdata('opinion')) {?>
+		<div class="alert alert-danger">
+			<?= $this->session->opinion; ?>
+		</div>
+		<?php } ?>
+		<?php if($this->session->has_userdata('opinion_success')) {?>
+		<div class="alert alert-success">
+			<?= $this->session->opinion_success; ?>
+		</div>
+		<?php } ?>
 		<header style="border-bottom: none; padding-left: 10px;"><?= $query->title ?></header>
 		<div class="col-sm-5 product-photo">
 			<img src=<?= $query->photo ?> width="100%">
@@ -72,6 +83,24 @@
 				</div>		
 			</div>	
 		</div>
+		<?php if($this->session->has_userdata('login')){ ?>
+		<div class="row">
+			<div class="col-sm-12">
+				<form action=<?= base_url()."opinia/".$query->id ?> method="POST">
+					<div class="form-group">
+						<textarea class="form-control" rows="5" id="comment" name="comment"></textarea>
+					</div>
+					<input type="hidden" value=<?= $this->session->login ?> name="author">
+					<input type="hidden" value=<?= time() ?> name="time">
+					<div class="form-group">
+						<button class="btn btn-primary" style="float: right">Dodaj opinię</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<?php }else{ ?>
+			<i>Aby dodać opinie do produktu, musisz być zalogowany</i>
+		<?php } ?>
 		<div class="row">
 			<div class="col-sm-12">
 				<header>PODOBNE PRODUKTY</header>

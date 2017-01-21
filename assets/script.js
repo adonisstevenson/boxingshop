@@ -19,7 +19,7 @@ function moveforward(current, next){
 
 }
 $('.scrolltop').click(function(){
-		$('html, body').animate({scrollTop : 0},800);
+		$('html, body').animate({scrollTop : 0},300);
 		return false;
 	});
 
@@ -169,4 +169,30 @@ function CloseForm(){
 $('#navSearch').click(function(){
 	alert("user clicked");
 });
+tinymce.init({
+    selector: "textarea",
+    setup: function (editor) {
+        editor.on('change', function () {
+            editor.save();
+        });
+    }
+});
+function testVal(){
+	tinyMCE.triggerSave();
+	$('.showOfferView').css('display', 'block');
 
+	var photo = $('#offerPhoto').val();
+	var title = $('#offerTitle').val();
+	var price = $('#offerPrice').val();
+	var description = $('#offerDescription').val();
+
+	console.log($('#offerDescription').val());
+	if(photo=='') $('.offerPhoto').html("<img src=" + "http://image.ceneo.pl/data/products/31635712/i-everlast-profesjonalne-rekawice-bokserskie-141-black.jpg" + " width=100%>");
+	else $('.offerPhoto').html("<img src=" + photo + " width=100%>");
+	if(price == '')	$('.offerPrice').html(0+" PLN");	
+	else $('.offerPrice').html(price+" PLN");	
+	if(title=='') $('#offerTitleEx').html("Tytuł oferty");
+	else $('#offerTitleEx').html(title);
+	if(description=='') $('.offerDescription').html("Opis oferty");
+	else $('.offerDescription').html(description);
+}

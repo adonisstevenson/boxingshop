@@ -422,20 +422,19 @@ width: 100%;
 	border-bottom: 1px dashed rgba(0, 0, 0, 0.4);
 	background-color: #ECECEC;
 	cursor: pointer;
+	font-size: 20px;
 }
-.adminOptionIcon{
-	float: left;
-	padding-top: 5px;
-}
-.adminOptionContent{
-	float: left;
+.adminOption, .adminOption a{
 	font-weight: bold;
 	font-size: 18px;
-	line-height: 200%;
-	color: #191919;
 	font-family: 'Oswald', sans-serif;
-	padding-left: 5px;
+	text-decoration: none;
+	color: #1F1F1F;
 }
+.adminIcon{
+	color: #EB5557;
+}
+
 @media screen and (min-width: 768px) and (max-width: 426px) {
     .adminOptionContent{
 	font-size: 16px !important;
@@ -481,4 +480,18 @@ width: 100%;
 	font-size: 18px;
 	width: 100%;
 	text-align: center;
+}
+/* dashboard */
+.storeLabel{
+	font-size: 16px;
+	margin-top: 10px;
+}
+.marginTop{
+	margin-top: 10px;
+}
+.paddingleft{
+	padding-left: 10px;
+}
+.showOfferView{
+	display: none;
 }

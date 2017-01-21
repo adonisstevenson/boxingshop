@@ -115,6 +115,7 @@ class Home extends CI_Controller {
 			$this->session->unset_userdata('login');
 			$this->session->unset_userdata('password');
 			$this->session->unset_userdata('logged_in');
+			$this->session->unset_userdata('rank');
 			 redirect('/');
 		}else{
 			show_404();

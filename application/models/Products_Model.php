@@ -11,9 +11,11 @@ class Products_Model extends CI_Model
 	public $title;
 	public $description;
 	public $category;
+	public $subcategory;
 	public $photo;
 	//products
 	public $product_id;
+	public $quantity;
 	public $status;
 	public $ordered_by;
 	//opinions
@@ -33,6 +35,30 @@ class Products_Model extends CI_Model
 		$query = $this->db->get_where('offers', array('category' => $category), 12, 0);
 
 		return $query;
+	}
+
+	public function insertOffer(){
+		//insert offer data in offers
+		$offerData = array(
+						'title'=>$this->title,
+						'description'=>$this->description,
+						'category'=>$this->category,
+						'subcategory'=>$this->subcategory,
+						'photo'=>$this->photo
+						);
+
+		$query = $this->db->insert('offers', $offerData);
+			//get the inserted offer id, and insert quantity of products by that offer id
+			$this->offer_id = $this->getOfferIdByTitle($this->title);
+			$productData = array(
+							'offer_id'=>$this->offer_id,
+							'status'=>"available"
+						);
+
+			for ($i=0; $i <= $this->quantity ; $i++) { 
+				$insertProducts = $this->db->insert('products', $productData);
+			};
+		
 	}
 
 	public function getOfferInfoByName($name){

@@ -8,30 +8,17 @@
                     </div>
                    <div class="adminBorder">
                         <div class="adminOptionRow">
-                            <div class="adminOptionIcon">
-                               <i class="fa fa-cogs fa-2x" aria-hidden="true"></i>
-                            </div>
-                            <div class="adminOptionContent">
-                                EDYTUJ OFERTY
-                            </div>
+                            <span class="glyphicon glyphicon-cog adminIcon" aria-hidden="true"></span>
+                            <span class="adminOption">DODAJ OFERTĘ</span>
+                        </div>
+                        <div class="adminOptionRow">
+                            <span class="glyphicon glyphicon-plus adminIcon" aria-hidden="true"></span>
+                            <span class="adminOption"><a href=<?= base_url().'wystaw' ?>>DODAJ OFERTĘ</a></span>
                             <div style="clear: both"></div>
                         </div>
                         <div class="adminOptionRow">
-                            <div class="adminOptionIcon">
-                                <i class="fa fa-plus-square fa-2x" style="color: #EB5557" aria-hidden="true"></i>
-                            </div>
-                            <div class="adminOptionContent">
-                                DODAJ OFERTĘ
-                            </div>
-                            <div style="clear: both"></div>
-                        </div>
-                        <div class="adminOptionRow">
-                            <div class="adminOptionIcon">
-                                <i class="fa fa-ban fa-2x" aria-hidden="true"></i>
-                            </div>
-                            <div class="adminOptionContent">
-                                ZBANOWANI
-                            </div>
+                            <span class="glyphicon glyphicon-remove-sign adminIcon" aria-hidden="true"></span>
+                            <span class="adminOption">ZBANOWANI</span>
                             <div style="clear: both"></div>
                         </div>
                    </div>

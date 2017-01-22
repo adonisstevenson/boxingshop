@@ -6,23 +6,23 @@
 <body>	
 <div class="container slider-box">
 	<div class="slider">
-		<div class="arrow arrow-right" onclick="slideright()">
+		<button class="arrow arrow-right" onclick="slideright()">
 			<i class="material-icons" style="font-size: 60px">keyboard_arrow_right</i>
-		</div>
-		<div class="arrow arrow-left" onclick="slideleft()">
+		</button>
+		<button class="arrow arrow-left" onclick="slideleft()">
 			<i class="material-icons" style="font-size: 60px">keyboard_arrow_left</i>
-		</div>
+		</button>
 		<div class="slide slide-1">
-			1
+			<img src="http://www.artsfon.com/pic/201511/2560x1440/artsfon.com-76912.jpg" width="100%" alt="">
 		</div>
 		<div class="slide slide-2">
-			2
+			<img src="https://i.ytimg.com/vi/FvcMVmb3MIg/maxresdefault.jpg" width="100%" alt="">
 		</div>
 		<div class="slide slide-3">
-			3
+			<img src="http://media.gettyimages.com/photos/professional-heavyweight-boxer-anthony-joshua-is-photographed-for-picture-id511141526?s=594x594" width="100%" alt="">
 		</div>
 		<div class="slide slide-4">
-			4
+			<img src="http://i2.liverpoolecho.co.uk/incoming/article6358662.ece/ALTERNATES/s1227b/4296829.jpg" width="100%" alt="">
 		</div>
 	</div>
 </div>

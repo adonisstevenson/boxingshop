@@ -12,6 +12,7 @@ class Home extends CI_Controller {
 	function index()
 	{	
 		$data['title'] = 'Boxingshop || Home';
+		$data['category'] = "index";
 		$this->load->view('header', $data);
 		$this->load->view('home');
 		$this->load->view('footer');
@@ -73,6 +74,7 @@ class Home extends CI_Controller {
 		if($data['query'] = $this->products->getOfferInfoByName($product)){
 			$data['quantity'] = $this->products->getProductQuantityByTitle($product);
 			$data['comments'] = $this->products->getOfferCommentsByTitle($product);
+			$data['category'] = $this->products->getCategoryBytitle($product);
 
 			$this->load->view('header', $data);
 			$this->load->view('productShow');
@@ -100,7 +102,8 @@ class Home extends CI_Controller {
 
 				 $this->session->set_userdata($userdata);
 
-				 redirect('/');
+			 $this->load->library('user_agent');
+			 redirect($this->agent->referrer());
 			 }else{ //id posted data to model function returns false
 			 	echo "user not exists";
 			 }

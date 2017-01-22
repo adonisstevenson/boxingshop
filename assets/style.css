@@ -1,6 +1,9 @@
 body{
 	background-color:#F6F6F6;
 }
+img{
+	background-color: transparent;
+}
 nav{
 	width: 100%;
 	list-style-type: none;
@@ -20,6 +23,9 @@ nav{
 }
 .fixWidth{
 	width: 1px; /* 1 domyślnie, bo przez JS zmieniane po kliknięciu 150 */
+}
+.cursorPointer{
+	cursor: pointer;
 }
 .navFormButton{
 	float: right;
@@ -104,8 +110,16 @@ li{
 	padding-top: 10px;
 	padding-left: 10px;
 	padding-right: 10px;
+	padding-bottom: 10px;
 	font-family: 'Oswald', sans-serif;
-	letter-spacing: 2px;
+	letter-spacing: 1px;
+}
+.noPadding{
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+.mainOption{
+	background-color: #962D34;
 }
 li a, li a:hover{
 	color: white;
@@ -131,6 +145,19 @@ width: 100%;
 .slider-box{
 	height: 520px;
 	padding: 0;
+	margin-bottom: 20px;
+}
+@media screen and (max-width: 1024px) {
+    .slider-box{height: 420px !important;}
+}
+@media screen and (max-width: 768px) {
+    .slider-box{height: 340px !important;}
+}
+@media screen and (max-width: 425px) {
+    .slider-box{height: 225px !important;}
+}
+@media screen and (max-width: 320px) {
+    .slider-box{height: 180px !important;}
 }
 .slide{
 	position: absolute;
@@ -144,6 +171,9 @@ width: 100%;
 	position: absolute;
 	top: 45%;
 	z-index: 9999;
+	background-color: transparent;
+	border: none;
+	outline: none;
 	cursor: pointer;
 }
 .arrow-left{
@@ -153,28 +183,21 @@ width: 100%;
 	right: 0;
 }
 .slide-1{
-	background-color: red;
+	display: block;
 }
 .slide-2{
 	display: none;
-	background-color: green;
 }
 .slide-3{
 	display: none;
-	background-color: blue;
 }
 .slide-4{
 	display: none;
-	background-color: yellow;
 }
 .slider{
 	position: relative;
 	height: 100%;
 	width: 100%;
-	background-color: silver;
-	overflow: hidden;
-	background-color: gray;
-	position: relative;
 	overflow: hidden;
 }
 .slider-position{
@@ -278,6 +301,7 @@ width: 100%;
 	width: 100%;
 	padding: 2px;
 	font-size: 18px;
+	height: 50px;
 	color: black;
 	text-decoration: none;
 	font-weight: bold;
@@ -330,8 +354,32 @@ width: 100%;
 }
 /* product show */
 
+.adminEditPanel{
+	position: absolute;
+	right: 0;
+	top: 35%;
+	width: 60px;
+	border-bottom-left-radius: 6px;
+	border-top-left-radius: 6px;
+	background:#AFAFAF;
+	border: 1px solid #D7D7D7;
+}
+.editPanelRow{
+	width: 100%;
+	padding: 6px;
+	text-align: center;
+	text-decoration: none;
+	color: #323232;
+	cursor: pointer;
+	font-size: 24px;
+}
+.editPanelHeader{
+	font-size: 15px !important;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+	font-weight: bold;
+}
 .product-photo{
-	z-index: 99999;
+	z-index: 50;
 }
 .icon-large{
 	font-size: 80px !important;

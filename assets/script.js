@@ -18,6 +18,10 @@ function moveforward(current, next){
 
 
 }
+
+function hideComment(id){
+	$('#'+id).fadeOut(250);
+}
 $('.scrolltop').click(function(){
 		$('html, body').animate({scrollTop : 0},300);
 		return false;
@@ -54,14 +58,16 @@ function movebackward(current, next){
 			$('.slide-'+current).css('display', 'none');
 				if(slide==-1) slide=2;
 				else slide-=1;
-
-				console.log(slide);
 			});
 		}
 
 }
 
+var mlSecondsToSlide = 5000;
+
 function slideright(){
+		mlSecondsToSlide = 5000;
+
 		if(slide==-1){
 			slide=4;
 		}
@@ -104,6 +110,7 @@ function slideright(){
 
 
 function slideleft(){
+	mlSecondsToSlide= 5000;
 	if(slide==4){
 		slide=-1
 	}
@@ -136,6 +143,47 @@ function slideleft(){
 	}
 
 }
+
+setInterval(function(){
+		if(slide==-1){
+			slide=4;
+		}
+
+		if(slide==0){
+			slide=6;
+
+		}
+
+		if(slide==1){
+			slide=8;
+
+		}
+
+		if(slide==2){ // from first to second slide
+			
+			moveforward(1, 2);
+
+		}
+
+		if(slide==4){ //from second to third slide
+			
+			moveforward(2, 3);
+			
+		}
+
+		if(slide==6){ //from second to third slide
+			
+			moveforward(3, 4);
+			
+		}
+
+		if(slide==8){
+
+			moveforward(4, 1);
+
+		}
+}, mlSecondsToSlide);
+
 var clickedOnUser = 0;
 $('#navUser').click(function(){
 	if(clickedOnUser==0){ // if form is closed

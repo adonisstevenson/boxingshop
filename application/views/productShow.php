@@ -4,6 +4,35 @@
 	
 </head>
 <body>
+	<?php if($this->session->has_userdata('rank') && $this->session->rank == "admin"){ ?>
+	<div class="adminEditPanel">
+		<div class="editPanelRow editPanelHeader">
+			Admin
+		</div>
+		<div class="editPanelRow" data-toggle="modal" data-target="#myModal">
+			<span class="glyphicon glyphicon-trash"></span>
+		</div>
+		<div class="editPanelRow">
+			<span class="glyphicon glyphicon-wrench"></span>
+		</div>
+	</div>
+	<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+			<div class="modal-body">
+				<center><span style="font-size: 16px;">Czy jesteś pewny usunięcia przedmiotu?</span></center>
+			</div>
+			<div class="modal-footer">
+				<center>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Tak</button>
+					<button type="button" class="btn btn-default">Nie</button>
+				</center>
+			</div>
+			</div>
+		</div>
+		</div>
+	<?php } ?>
 	<div class="container">
 		<?php if($this->session->has_userdata('opinion')) {?>
 		<div class="alert alert-danger">
@@ -60,9 +89,10 @@
 				<div class="col-sm-12">
 				<header class="clearbottom">OPINIE</header>
 				<div class="opinion-box">
+					
 					<?php if($comments->num_rows() > 0 ){ ?>
 					<?php foreach($comments->result() as $comment){ ?>
-					<div class="opinion">
+					<div class="opinion" id=<?= $comment->id ?>>
 						<div class="opinion-user">
 						<img src="http://vignette3.wikia.nocookie.net/the-enigma-corporation/images/0/01/Users-User-icon.png/revision/latest?cb=20140213102228" width="60px">
 						<?= $comment->author; ?>
@@ -71,6 +101,7 @@
 						<div class="opinion-content-date">10-01-2017</div>
 						<div class="opinionRate">
 							<i class="material-icons colorGreen">thumb_up</i>
+							<i class="material-icons cursorPointer" onclick="hideComment(<?= $comment->id ?>)">delete</i>
 						</div>
 						<?= $comment->comment; ?>
 					</div>

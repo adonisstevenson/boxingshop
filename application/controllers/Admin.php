@@ -77,7 +77,11 @@ class Admin extends CI_Controller {
 				$this->products->photo = $this->input->post('offerPhoto');
 				$this->products->quantity = $this->input->post('offerQuantity');
 
-				header('Location:'.base_url().'produkty/'.urlencode($this->input->post('offerTitle')));
+				if($try = $this->products->insertOffer()){
+					header('Location:'.base_url().'produkty/'.urlencode($this->input->post('offerTitle')));
+				}else{
+					echo "error";
+				}
 				
 
 			}

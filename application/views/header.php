@@ -29,7 +29,7 @@
     <a href="#"><i class="fa fa-angle-up fa-3x" aria-hidden="true"></i></a>
 </div>
 <nav class="upper-navbar">
-    <div class="container">
+    <div class="container noPadding">
         <div class="logo">
             <div class="logo-navbar">
                 <div class="logo-image">
@@ -60,20 +60,53 @@
     </div>
 </nav>
 <nav class="lower-navbar">
-    <div class="container">
-        <li><i class="material-icons">home</i></li>
-        <li>
-            <a href=<?= base_url().'ochraniacze' ?>>OCHRONA</a>
-        </li> 
-        <li>
+    <div class="container noPadding">
+      <?php if(isset($category) && $category=="index"){ ?>
+        <li class="mainOption">
+             <a href=<?= base_url() ?>>GŁÓWNA</a>
+        </li>
+      <?php }else{ ?>
+          <li>
+             <a href=<?= base_url() ?>>GŁÓWNA</a>
+          </li>
+       <?php  } ?>
+       <?php if(isset($category) && $category=="defense"){ ?>
+        <li class="mainOption">
+             <a href=<?= base_url().'ochraniacze' ?>>OCHRONA</a>
+        </li>
+      <?php }else{ ?>
+          <li>
+             <a href=<?= base_url().'ochraniacze' ?>>OCHRONA</a>
+          </li>
+       <?php  } ?>
+       <?php if(isset($category) && $category=="training"){ ?>
+        <li class="mainOption">
              <a href=<?= base_url().'trening' ?>>TRENING</a>
         </li>
-        <li>
+      <?php }else{ ?>
+          <li>
+             <a href=<?= base_url().'trening' ?>>TRENING</a>
+          </li>
+       <?php  } ?>
+       <?php if(isset($category) && $category=="shoes"){ ?>
+        <li class="mainOption">
              <a href=<?= base_url().'obuwie' ?>>OBUWIE</a>
         </li>
-        <li>
+      <?php }else{ ?>
+          <li>
+             <a href=<?= base_url().'obuwie' ?>>OBUWIE</a>
+          </li>
+       <?php  } ?>
+       <?php if(isset($category) && $category=="clothes"){ ?>
+        <li class="mainOption">
              <a href=<?= base_url().'odziez' ?>>ODZIEŻ</a>
         </li>
+      <?php }else{ ?>
+          <li>
+             <a href=<?= base_url().'odziez' ?>>ODZIEŻ</a>
+          </li>
+       <?php  } ?>
+
        <?php if($this->session->has_userdata('login')){ ?> 
         <li class="nav-icons" style="padding-left:0px"><?= $this->session->login ?></li>
          <a href=<?= base_url().'wyloguj' ?>><li class="nav-icons"><i class="material-icons">exit_to_app</i></li></a> 
@@ -81,7 +114,7 @@
             <li class="nav-icons" id="navUser" ><i class="material-icons">person_outline</i></li>
        <?php } ?>
         <li class="nav-icons" id="navSearch"><i class="material-icons">search</i></li>
-        <form class="navUserForm" action="auth" method="POST">
+        <form class="navUserForm" method="POST" action=<?= base_url().'auth' ?>>
             <input type="submit" value="zaloguj" class="navFormButton"> 
             <input type="password" name="password" value="" class="navUserForm fixWidth" placeholder="hasło">
             <input type="text" name="login" value="" class="navUserForm fixWidth" placeholder="login">

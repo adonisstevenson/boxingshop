@@ -38,7 +38,6 @@ class Products_Model extends CI_Model
 	}
 
 	public function insertOffer(){
-		//insert offer data in offers
 		$offerData = array(
 						'title'=>$this->title,
 						'description'=>$this->description,
@@ -47,8 +46,7 @@ class Products_Model extends CI_Model
 						'photo'=>$this->photo
 						);
 
-		$query = $this->db->insert('offers', $offerData);
-			//get the inserted offer id, and insert quantity of products by that offer id
+		if($query = $this->db->insert('offers', $offerData)){
 			$this->offer_id = $this->getOfferIdByTitle($this->title);
 			$productData = array(
 							'offer_id'=>$this->offer_id,
@@ -57,8 +55,11 @@ class Products_Model extends CI_Model
 
 			for ($i=0; $i <= $this->quantity ; $i++) { 
 				$insertProducts = $this->db->insert('products', $productData);
-			};
-		
+			}
+
+			return TRUE;
+		}else return FALSE;
+
 	}
 
 	public function getOfferInfoByName($name){
@@ -104,5 +105,14 @@ class Products_Model extends CI_Model
 
 	public function addOpinion(){
 		$insert = $this->db->insert('comments', array('offer_id'=>$this->offer_id, 'comment'=>$this->comment, 'author'=>$this->author, 'date'=>$this->time));
+	}
+	
+	public function getCategoryByTitle($title){
+		$title = urldecode($title);
+
+		$query = $this->db->get_where('offers', array('title'=>$title))->row();
+		$category = $query->category;
+
+		return $category;
 	}
 }

@@ -12,6 +12,14 @@ class Admin extends CI_Controller {
 		$this->load->model('User_Model', 'user');
 	}
 
+	private function getCartItems(){
+		if($this->session->has_userdata('login')){
+			$this->carts->owner = $this->session->login;
+			$items = $this->carts->getCartItemsQuantityByLogin();
+			return $items;
+		}else return 0;
+	}
+
 	function index()
 	{	
 		$data['title'] = 'Boxingshop || Panel Administracyjny';
@@ -85,6 +93,22 @@ class Admin extends CI_Controller {
 				
 
 			}
+	}
+
+	public function deleteComment($id){
+		$this->products->comment_id = $id;
+		if($delete = $this->products->deleteCommentById()){
+			
+		} else echo "Nie udało się usunąć komentarza!";
+	}
+
+	public function deleteOffer(){
+		$this->products->offer_id = $this->input->post('offerId');
+
+		$this->products->deleteOfferById();
+
+		$this->session->set_flashdata('deleteOffer', 'Oferta jak i wszystkie produkty w magazynie z nią związane zostały usunięte');
+		redirect('/');
 	}
 
 	

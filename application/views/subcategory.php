@@ -83,14 +83,16 @@
 			<?php foreach($productsCategory->result() as $product){ ?>
 			<div class="col-sm-4 col-md-3" style="padding: 5px;">
 			<div class="product-data-box">
-				<a href=<?= base_url().'produkty/'.urlencode($product->title) ?>>
+				
 					<div class="product-data-photo">
 						<img src=<?= $product->photo ?> width="80%">
 					</div>
 					<div class="product-data-title">
-						<?= strtoupper($product->title) ?>
+						<a href=<?= base_url().'produkty/'.urlencode($product->title) ?>>
+							<?= strtoupper($product->title) ?>
+						</a>
 					</div>
-				</a>
+				
 			</div>
 		</div>
 			<?php } ?>

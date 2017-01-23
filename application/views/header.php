@@ -55,7 +55,6 @@
         </div>
         <div class="cart">
                 <i class="material-icons" style="font-size: 60px; color: white; width: 100%;">shopping_cart</i>
-                <div class="cartAbsolute">2</div>
         </div>
     </div>
 </nav>

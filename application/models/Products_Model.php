@@ -19,7 +19,7 @@ class Products_Model extends CI_Model
 	public $status;
 	public $ordered_by;
 	//opinions
-	public $id;
+	public $comment_id;
 	public $comment;
 	public $author;
 	public $time;
@@ -114,5 +114,17 @@ class Products_Model extends CI_Model
 		$category = $query->category;
 
 		return $category;
+	}
+
+	public function deleteCommentById(){
+
+		$del = $this->db->delete('comments', array('id'=>$this->comment_id));
+		return TRUE;
+	}
+
+	public function deleteOfferById(){
+		$deleteOffer = $this->db->delete('offers', array('id'=>$this->offer_id));
+		$deleteProducts = $this->db->delete('products', array('offer_id'=>$this->offer_id));
+
 	}
 }

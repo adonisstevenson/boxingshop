@@ -25,8 +25,11 @@
 			</div>
 			<div class="modal-footer">
 				<center>
-					<button type="button" class="btn btn-default" data-dismiss="modal">Tak</button>
-					<button type="button" class="btn btn-default">Nie</button>
+					<form method="POST" action=<?= base_url().'usunoferte' ?>>
+					<input type="hidden" name="offerId" value=<?= $query->id ?>>
+					<input type="submit" class="btn btn-default" value="Tak">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Nie</button>
+					</form>
 				</center>
 			</div>
 			</div>
@@ -87,7 +90,7 @@
 		
 			<div class="row">
 				<div class="col-sm-12">
-				<header class="clearbottom">OPINIE</header>
+				<header class="clearbottom" id="opinie">OPINIE</header>
 				<div class="opinion-box">
 					
 					<?php if($comments->num_rows() > 0 ){ ?>
@@ -98,10 +101,10 @@
 						<?= $comment->author; ?>
 					</div>
 					<div class="opinion-content">
-						<div class="opinion-content-date">10-01-2017</div>
+						<div class="opinion-content-date"><?= date("Y-m-d H:i", $comment->date) ?></div>
 						<div class="opinionRate">
 							<i class="material-icons colorGreen">thumb_up</i>
-							<i class="material-icons cursorPointer" onclick="hideComment(<?= $comment->id ?>)">delete</i>
+							<i class="material-icons cursorPointer" onclick="hideComment(<?= $comment->id ?>, '<?= base_url() ?>')">delete</i>
 						</div>
 						<?= $comment->comment; ?>
 					</div>
@@ -121,8 +124,6 @@
 					<div class="form-group">
 						<textarea class="form-control" rows="5" id="comment" name="comment"></textarea>
 					</div>
-					<input type="hidden" value=<?= $this->session->login ?> name="author">
-					<input type="hidden" value=<?= time() ?> name="time">
 					<div class="form-group">
 						<button class="btn btn-primary" style="float: right">Dodaj opinię</button>
 					</div>
@@ -152,6 +153,10 @@
 		<?php } ?>
 			</div>
 		</div>
+		<form id="testForm2">
+			<input type="text" name="text">
+			<input type="submit" class="btn btn-primary" value="GO!">
+		</form>
 	</div>
 </body>
 </html>

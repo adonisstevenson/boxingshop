@@ -3,7 +3,14 @@
 <head>
 
 </head>
-<body>	
+<body>
+	<?php if($this->session->has_userdata('deleteOffer')){ ?>
+		<div class="container">
+			<div class="alert alert-success">
+				<?= $this->session->deleteOffer; ?>
+			</div>
+		</div>
+	<?php } ?>
 <div class="container slider-box">
 	<div class="slider">
 		<button class="arrow arrow-right" onclick="slideright()">

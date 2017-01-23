@@ -3,16 +3,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends CI_Controller {
 
+
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('Products_Model', 'products');
-		$this->load->model('user_Model', 'user');
+		$this->load->model('Carts_Model', 'carts');
+		$this->load->model('User_Model', 'user');
+
 	}
+
 
 	function index()
 	{	
 		$data['title'] = 'Boxingshop || Home';
 		$data['category'] = "index";
+
 		$this->load->view('header', $data);
 		$this->load->view('home');
 		$this->load->view('footer');
@@ -75,7 +80,7 @@ class Home extends CI_Controller {
 			$data['quantity'] = $this->products->getProductQuantityByTitle($product);
 			$data['comments'] = $this->products->getOfferCommentsByTitle($product);
 			$data['category'] = $this->products->getCategoryBytitle($product);
-
+			$data['title'] = "Boxingshop || ".$data['query']->title;
 			$this->load->view('header', $data);
 			$this->load->view('productShow');
 			$this->load->view('footer');
@@ -136,8 +141,8 @@ class Home extends CI_Controller {
 			 redirect($this->agent->referrer());
 		 }else{
 
-			 $this->products->author = $this->input->post('author');
-			 $this->products->time = $this->input->post('time');
+			 $this->products->author = $this->session->login;
+			 $this->products->time = time();
 			 $this->products->comment = $this->input->post('comment');
 			 $this->products->offer_id = $offer_id;
 
@@ -145,9 +150,14 @@ class Home extends CI_Controller {
 
 			 $this->load->library('user_agent');
 			 $this->session->set_flashdata('opinion_success', 'Komentarz dodany pomyślnie. Dziękujemy za wyrażoną opinie');
-			 redirect($this->agent->referrer());
+			 redirect($this->agent->referrer().'#opinie');
 
 		 }
 		
+	}
+
+	public function testform(){
+		http_response_code(400);
+     	return;
 	}
 }

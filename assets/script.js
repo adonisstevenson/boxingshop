@@ -19,9 +19,47 @@ function moveforward(current, next){
 
 }
 
-function hideComment(id){
+function hideComment(id, url){
 	$('#'+id).fadeOut(250);
+	console.log(url);	
+	var jqxhr = $.get( url+"usunkomentarz/"+id, function (data){
+		if(data!=''){
+			alert(data);
+		}
+	});
+  
 }
+
+$('#testForm').submit(function(event){
+	event.preventDefault();
+
+	var data = $(this).serialize();
+
+	$.post( "http://localhost/boxingshop/testform", data)
+			.done(function( response ) {
+			console.log( "Data Loaded: " + response );
+		}).fail(function(){
+			alert("error");
+		});
+});//1st way
+
+$('#testForm2').submit(function(event){
+	event.preventDefault();
+
+	var data = $(this).serialize();
+
+	$.ajax({
+		type: "POST",
+		url: 'http://localhost/boxingshop/testform',
+		data: data,
+		error: function() { alert('Error'); },
+		success: function(response) { alert('Success'+ response); },
+	});
+});//2nd way
+function addComment(offerId){
+	console.log(offerId);
+}
+
 $('.scrolltop').click(function(){
 		$('html, body').animate({scrollTop : 0},300);
 		return false;

@@ -16,5 +16,12 @@ class Carts_Model extends CI_Model
 		parent::__construct();
 	}
 
+	public function getCartItemsQuantityByLogin(){
+		$this->db->select('id');
+		$query = $this->db->get_where('carts', array('owner'=>$this->owner)); 
+
+		return $query->num_rows();
+	}
+
 
 }

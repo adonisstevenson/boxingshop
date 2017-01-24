@@ -13,7 +13,10 @@
 			<span class="glyphicon glyphicon-trash"></span>
 		</div>
 		<div class="editPanelRow">
-			<span class="glyphicon glyphicon-wrench"></span>
+			<form action=<?= base_url().'edytujoferte' ?> method="POST">
+				<input type="hidden" name="offer_id" value=<?= $query->id ?>>
+			    <button type="submit" class="clearButtonElements"><span class="glyphicon glyphicon-wrench"></span></button>
+			</form>
 		</div>
 	</div>
 	<!-- Modal -->

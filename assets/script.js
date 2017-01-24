@@ -53,7 +53,12 @@ $('#testForm2').submit(function(event){
 		url: 'http://localhost/boxingshop/testform',
 		data: data,
 		error: function() { alert('Error'); },
-		success: function(response) { alert('Success'+ response); },
+		success: function(response) {
+			 var responses = jQuery.parseJSON(response);
+
+			 console.log('Success '+ responses.one); 
+			
+		}
 	});
 });//2nd way
 function addComment(offerId){

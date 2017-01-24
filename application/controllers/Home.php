@@ -157,7 +157,7 @@ class Home extends CI_Controller {
 	}
 
 	public function testform(){
-		http_response_code(400);
-     	return;
+		$data = array('one'=>"onsae", 'two'=>"two");
+		echo json_encode($data);
 	}
 }

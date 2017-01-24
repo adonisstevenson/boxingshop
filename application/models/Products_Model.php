@@ -13,6 +13,8 @@ class Products_Model extends CI_Model
 	public $category;
 	public $subcategory;
 	public $photo;
+	public $current_price;
+	public $previous_price;
 	//products
 	public $product_id;
 	public $quantity;
@@ -43,7 +45,8 @@ class Products_Model extends CI_Model
 						'description'=>$this->description,
 						'category'=>$this->category,
 						'subcategory'=>$this->subcategory,
-						'photo'=>$this->photo
+						'photo'=>$this->photo,
+						'current_price'=>$this->current_price
 						);
 
 		if($query = $this->db->insert('offers', $offerData)){
@@ -65,6 +68,16 @@ class Products_Model extends CI_Model
 	public function getOfferInfoByName($name){
 
 		$query = $this->db->get_where('offers', array('title'=>urldecode($name)));
+		if($query->num_rows()>0){
+			$result = $query->row();
+
+			return $result;
+		}else return FALSE;
+	}
+
+	public function getOfferInfoById(){
+
+		$query = $this->db->get_where('offers', array('id'=>$this->offer_id));
 		if($query->num_rows()>0){
 			$result = $query->row();
 
@@ -126,5 +139,61 @@ class Products_Model extends CI_Model
 		$deleteOffer = $this->db->delete('offers', array('id'=>$this->offer_id));
 		$deleteProducts = $this->db->delete('products', array('offer_id'=>$this->offer_id));
 
+	}
+	public function getProductsQuantityById(){
+
+		$this->db->where('offer_id', $this->offer_id);
+		$this->db->from('products');
+
+		$result = $this->db->count_all_results();
+		return $result;
+	}
+	public function editOffer(){
+		$actualQuantity = $this->getProductsQuantityById();
+		$previousPrice = $this->getOfferPriceById();
+		if($previousPrice == $this->current_price){
+			$previousPrice = NULL;
+		}
+		$inputedQuantity = $this->quantity;
+
+		$dataToUpdate = array(
+        'title' => $this->title,
+        'description' => $this->description,
+		'category'=>$this->category,
+		'subcategory'=>$this->subcategory,
+		'photo'=>$this->photo,
+		'current_price'=>$this->current_price,
+		'previous_price'=>$previousPrice
+		);
+
+		$this->db->where('id', $this->offer_id);
+		$this->db->update('offers', $dataToUpdate);
+
+		if($actualQuantity > $inputedQuantity){
+			 $quantity = $actualQuantity - $inputedQuantity; //minus ... products
+				 $this->db->limit($quantity);
+				 $del =  $this->db->delete('products', array('offer_id'=>$this->offer_id));
+		}
+		elseif($actualQuantity < $inputedQuantity){
+			 $quantity = $inputedQuantity - $actualQuantity; // plus ... products
+			 for ($i=1; $i <=$quantity ; $i++) { 
+				  $insert = $this->db->insert('products', array('offer_id'=>$this->offer_id, 'status'=>"available"));
+			 }
+			 
+		}
+		elseif($inputedQuantity == 0){
+				$del =  $this->db->delete('products', array('offer_id'=>$this->offer_id));
+			}
+
+	
+
+		return TRUE;
+	}
+
+	public function getOfferPriceById(){
+		$query = $this->db->get_where('offers', array('id'=>$this->offer_id))->row();
+		$price = $query->current_price;
+
+		return $price;
 	}
 }

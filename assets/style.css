@@ -378,6 +378,15 @@ width: 100%;
 	cursor: pointer;
 	font-size: 24px;
 }
+.editPanelRow a{
+	text-decoration: none;
+	color: #323232;
+}
+.clearButtonElements{
+	border: none;
+	background: transparent;
+	outline: none;
+}
 .editPanelHeader{
 	font-size: 15px !important;
 	border-bottom: 1px solid rgba(255, 255, 255, 0.8);
@@ -432,7 +441,7 @@ width: 100%;
 	width: 100%;
 	min-height: 80px;
 	padding-top: 5px;
-	background-color: rgba(192, 192, 192, 0.3);
+	background-color: rgba(192, 192, 192, 0.15);
 	margin-bottom: 5px;
 }
 .opinion-content{

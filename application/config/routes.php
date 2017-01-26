@@ -50,21 +50,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'home';
-$route['produkty/(:any)'] = 'Home/show/$1';
-$route['ochraniacze'] = 'Home/defense';
-$route['ochraniacze/(:any)'] = 'Home/defense/$1';
-$route['trening'] = 'Home/training';
-$route['trening/(:any)'] = 'Home/training/$1';
-$route['obuwie'] = 'Home/shoes';
-$route['obuwie/(:any)'] = 'Home/shoes/$1';
-$route['odziez'] = 'Home/clothes';
-$route['odziez/(:any)'] = 'Home/clothes/$1';
-$route['auth']['post'] = 'Home/auth';
-$route['wyloguj'] = 'Home/logout';
+$route['sklep/(:any)'] = 'Home/findByCategory/$1';
+$route['produkty/(:any)'] = 'Offer/show/$1';
+$route['auth']['post'] = 'User/auth';
+$route['wyloguj'] = 'User/logout';
 $route['admin'] = "Admin";
 $route['wystaw'] = "Admin/storeOffer";
 $route['dodaj']['post'] = "Admin/addOffer";
-$route['opinia/(:any)']['post'] = 'Home/addOpinion/$1';
+$route['opinia/(:any)']['post'] = 'Offer/addOpinion/$1';
 $route['usunkomentarz/(:any)'] = 'Admin/deleteComment/$1';
 $route['usunoferte']['post'] = 'Admin/deleteOffer';
 $route['edytujoferte']['post'] = 'Admin/editOffer';

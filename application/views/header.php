@@ -71,38 +71,38 @@
        <?php  } ?>
        <?php if(isset($category) && $category=="defense"){ ?>
         <li class="mainOption">
-             <a href=<?= base_url().'ochraniacze' ?>>OCHRONA</a>
+             <a href=<?= base_url().'sklep/obrona' ?>>OCHRONA</a>
         </li>
       <?php }else{ ?>
           <li>
-             <a href=<?= base_url().'ochraniacze' ?>>OCHRONA</a>
+             <a href=<?= base_url().'sklep/obrona' ?>>OCHRONA</a>
           </li>
        <?php  } ?>
        <?php if(isset($category) && $category=="training"){ ?>
         <li class="mainOption">
-             <a href=<?= base_url().'trening' ?>>TRENING</a>
+             <a href=<?= base_url().'sklep/trening' ?>>TRENING</a>
         </li>
       <?php }else{ ?>
           <li>
-             <a href=<?= base_url().'trening' ?>>TRENING</a>
+             <a href=<?= base_url().'sklep/trening' ?>>TRENING</a>
           </li>
        <?php  } ?>
        <?php if(isset($category) && $category=="shoes"){ ?>
         <li class="mainOption">
-             <a href=<?= base_url().'obuwie' ?>>OBUWIE</a>
+             <a href=<?= base_url().'sklep/obuwie' ?>>OBUWIE</a>
         </li>
       <?php }else{ ?>
           <li>
-             <a href=<?= base_url().'obuwie' ?>>OBUWIE</a>
+             <a href=<?= base_url().'sklep/obuwie' ?>>OBUWIE</a>
           </li>
        <?php  } ?>
        <?php if(isset($category) && $category=="clothes"){ ?>
         <li class="mainOption">
-             <a href=<?= base_url().'odziez' ?>>ODZIEŻ</a>
+             <a href=<?= base_url().'sklep/ciuchy' ?>>ODZIEŻ</a>
         </li>
       <?php }else{ ?>
           <li>
-             <a href=<?= base_url().'odziez' ?>>ODZIEŻ</a>
+             <a href=<?= base_url().'sklep/ciuchy' ?>>ODZIEŻ</a>
           </li>
        <?php  } ?>
 

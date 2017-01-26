@@ -30,6 +30,7 @@ function hideComment(id, url){
   
 }
 
+
 $('#testForm').submit(function(event){
 	event.preventDefault();
 

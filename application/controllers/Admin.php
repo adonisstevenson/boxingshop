@@ -35,12 +35,6 @@ class Admin extends CI_Controller {
 		$this->load->view('footer');
 	}
 	public function addOffer(){
-		// echo $this->input->post('offerTitle').'<br>';
-		// echo $this->input->post('offerDescription').'<br>';
-		// echo $this->input->post('offerPrice').'<br>';
-		// echo $this->input->post('offerCategory').'<br>';
-		// echo $this->input->post('offerSubCategory').'<br>';
-		// echo $this->input->post('offerPhoto').'<br>';
 
 		$this->load->library('form_validation');
 
@@ -59,28 +53,7 @@ class Admin extends CI_Controller {
 		}else{
 				$this->products->title = $this->input->post('offerTitle');
 				$this->products->description = $this->input->post('offerDescription');
-				switch ($this->input->post('offerCategory')) {
-					case 'trening':
-						$this->products->category = 'training';
-						break;
-
-					case 'ochrona':
-						$this->products->category = 'defense';
-						break;
-
-					case 'obuwie':
-						$this->products->category = 'shoes';
-						break;
-
-					case 'odzież':
-						$this->products->category = 'clothes';
-						break;
-					
-					default:
-						$this->products->category = $this->input->post('offerCategory');
-						break;
-				}
-
+		$this->products->category = $this->input->post('offerCategory');
 				$this->products->subcategory = $this->input->post('offerSubCategory');
 				$this->products->photo = $this->input->post('offerPhoto');
 				$this->products->current_price = $this->input->post('offerPrice');
@@ -142,36 +115,20 @@ class Admin extends CI_Controller {
 				$this->products->offer_id = $this->input->post('offer_id');
 				$this->products->title = $this->input->post('offerTitle');
 				$this->products->description = $this->input->post('offerDescription');
-				switch ($this->input->post('offerCategory')) {
-					case 'trening':
-						$this->products->category = 'training';
-						break;
-
-					case 'ochrona':
-						$this->products->category = 'defense';
-						break;
-
-					case 'obuwie':
-						$this->products->category = 'shoes';
-						break;
-
-					case 'odzież':
-						$this->products->category = 'clothes';
-						break;
-					
-					default:
-						$this->products->category = $this->input->post('offerCategory');
-						break;
-				}
-
+				$this->products->category = $this->input->post('offerCategory');
 				$this->products->subcategory = $this->input->post('offerSubCategory');
 				$this->products->photo = $this->input->post('offerPhoto');
 				$this->products->current_price = $this->input->post('offerPrice');
 				$this->products->quantity = $this->input->post('offerQuantity');
 
 				if($try = $this->products->editOffer()){
+					$this->session->set_flashdata('edit_success', 'Oferta edytowana pomyślnie.');
 					redirect(base_url().'produkty/'.urlencode($this->products->title));
-				}else echo "not good";
+
+				}else{
+					$this->session->set_flashdata('edit_error', 'Wystąpił błąd przy edytowaniu oferty. Sprawdź, czy nie pozostawiłeś żadnych pól pustych, bądź skonsultuj się z głównym administratorem strony');
+					redirect(base_url().'produkty/'.urlencode($this->products->title));
+				}
 
 			}
 

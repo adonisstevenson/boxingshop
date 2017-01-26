@@ -23,139 +23,22 @@ class Home extends CI_Controller {
 		$this->load->view('footer');
 	}
 
-	public function defense($subcategory = NULL){
 
-		if($subcategory == NULL){ // get show subcategories and below recommended products from category...
-			$data['productsCategory'] = $this->products->getElementsByCategory('defense');
-			$data['category'] = "defense";
-
-			$data['title'] = 'Boxingshop || Ochraniacze';
+	public function findByCategory($category){
+		$this->products->category = $category;
+		if($category = $this->products->findByCategory()){
+			$data['productsCategory'] = $category;
+			$data['subCategories'] = $this->products->getSubCategory();
+			$data['category'] = $this->products->category;
+			
+			$data['title'] = 'Boxingshop || Produkty';
 			$this->load->view('header', $data);
 			$this->load->view('subcategory', $data);
 			$this->load->view('footer');
-		}
-	}
-
-	public function training($subcategory = NULL){
-		
-		if($subcategory == NULL){ // get show subcategories and below recommended products from category...
-			$data['productsCategory'] = $this->products->getElementsByCategory('training');
-			$data['category'] = "training";
-
-			$data['title'] = 'Boxingshop || Trening';
-			$this->load->view('header', $data);
-			$this->load->view('subcategory', $data);
-			$this->load->view('footer');
-		}
-	}
-
-	public function shoes($subcategory = NULL){
-		
-		if($subcategory==NULL){ // get show subcategories and below recommended products from category...
-			$data['productsCategory'] = $this->products->getElementsByCategory('shoes');
-			$data['category'] = "shoes";
-
-			$data['title'] = 'Boxingshop || Obuwie';
-			$this->load->view('header', $data);
-			$this->load->view('subcategory', $data);
-			$this->load->view('footer');
-		}
-	}
-
-	public function clothes($subcategory = NULL){
-		
-		if($subcategory == NULL){ // get show subcategories and below recommended products from category...
-			$data['productsCategory'] = $this->products->getElementsByCategory('clothes');
-			$data['category'] = "clothes";
-
-			$data['title'] = 'Boxingshop || Odzież';
-			$this->load->view('header', $data);
-			$this->load->view('subcategory', $data);
-			$this->load->view('footer');
-		}
-	}
-
-	public function show($product){
-		if($data['query'] = $this->products->getOfferInfoByName($product)){
-			$data['quantity'] = $this->products->getProductQuantityByTitle($product);
-			$data['comments'] = $this->products->getOfferCommentsByTitle($product);
-			$data['category'] = $this->products->getCategoryBytitle($product);
-			$data['title'] = "Boxingshop || ".$data['query']->title;
-			$this->load->view('header', $data);
-			$this->load->view('productShow');
-			$this->load->view('footer');
-		}else show_404();
-	}
-	public function auth(){
-		 $this->load->library('form_validation');
-
-		 $this->form_validation->set_rules('login', 'User login', 'required');
-		 $this->form_validation->set_rules('password', 'Password', 'required');
-
-		 if($this->form_validation->run()){ //if data from form is required
-		 	//pass data to model function, which gonna check if user in $login exists in DB
-			 $this->user->login = $this->input->post('login');
-			 $this->user->password = $this->input->post('password');
-			 if($this->user->auth()){ //if the function returns true
-			 $rank = $this->user->checkRankByName();
-			 	$userdata = array(
-					 	'login'=>$this->input->post('login'),
-						'password'=>$this->input->post('password'),
-						'logged_in'=>TRUE,
-						'rank'=>$rank
-				 );
-
-				 $this->session->set_userdata($userdata);
-
-			 $this->load->library('user_agent');
-			 redirect($this->agent->referrer());
-			 }else{ //id posted data to model function returns false
-			 	echo "user not exists";
-			 }
-			 //if model will response true, we're gonna make a session with email, login an logged_in and redirect to index page
-		 }else{
-			 $this->load->library('user_agent');
-			 redirect($this->agent->referrer()); //redirect to previous page
-		 }
-	}
-	public function logout(){
-		if($this->session->has_userdata('login')){
-			$this->session->unset_userdata('login');
-			$this->session->unset_userdata('password');
-			$this->session->unset_userdata('logged_in');
-			$this->session->unset_userdata('rank');
-			 redirect('/');
 		}else{
 			show_404();
 		}
 	}
-	public function addOpinion($offer_id){
-		$this->load->library('form_validation');
-
-		 $this->form_validation->set_rules('comment', 'Content of comment', 'required|min_length[5]|max_length[500]');
-
-		 if(!$this->form_validation->run()){
-			 $this->load->library('user_agent');
-
-			 $this->session->set_flashdata('opinion', 'Coś poszło nie po myśli. Upewnij się, że nie pozostawiłeś pustego pola, bądź Twój komentarz jest za długi');
-			 redirect($this->agent->referrer());
-		 }else{
-
-			 $this->products->author = $this->session->login;
-			 $this->products->time = time();
-			 $this->products->comment = $this->input->post('comment');
-			 $this->products->offer_id = $offer_id;
-
-			 $this->products->addOpinion();
-
-			 $this->load->library('user_agent');
-			 $this->session->set_flashdata('opinion_success', 'Komentarz dodany pomyślnie. Dziękujemy za wyrażoną opinie');
-			 redirect($this->agent->referrer().'#opinie');
-
-		 }
-		
-	}
-
 	public function testform(){
 		$data = array('one'=>"onsae", 'two'=>"two");
 		echo json_encode($data);

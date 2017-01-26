@@ -25,7 +25,9 @@ class Products_Model extends CI_Model
 	public $comment;
 	public $author;
 	public $time;
-
+	//categories
+	public $category_id;
+	public $category_name;
 
 	function __construct()
 	{
@@ -195,5 +197,25 @@ class Products_Model extends CI_Model
 		$price = $query->current_price;
 
 		return $price;
+	}
+
+	public function findByCategory(){
+		//$this->category_name;
+
+		$check = $this->db->get_where('categories', array('category'=>$this->category));
+
+		if($check->num_rows()>0){
+
+		$offers = $this->getElementsByCategory($this->category);
+
+		return $offers;
+			
+		}else return FALSE;
+	}
+	public function getSubCategory(){
+		
+		$get = $this->db->get_where('subcategories', array('category'=>$this->category));
+
+		return $get;
 	}
 }

@@ -10,8 +10,9 @@
                     <?= $this->session->addOffer; ?>
                 </div>
             <?php } ?>
-             <header class="clearbottom paddingleft">DODAJ OFERTĘ</header>
             <div class="col-sm-12">
+                <div class="row">
+                <header class="clearbottom" style="margin-left: 0 !important;">EDYTUJ OFERTĘ</header>
                 <form action=<?= base_url().'edytuj' ?> method="POST">
                     <div class="row">
                         <div class="form-group">
@@ -25,7 +26,12 @@
                         <div class="form-group">
                             <div class="col-sm-6">
                                 <label for="offer-category" class="storeLabel">Kategoria:</label>
-                                <input type="text" class="form-control" id="offerCategory" placeholder="np. Trening" name="offerCategory" value='<?= $offer->category ?>'>
+                                <select class="form-control" id="offerCategory" name="offerCategory">
+                                    <option value="obrona">Ochrona</option>
+                                    <option value="trening">Trening</option>
+                                    <option value="obuwie">Obuwie</option>
+                                    <option value="ciuchy">Odzież</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -33,7 +39,23 @@
                         <div class="form-group">
                             <div class="col-sm-6">
                                 <label for="offer-subcategory" class="storeLabel">Podkategoria:</label>
-                                <input type="text" class="form-control" id="offerSubCategory" placeholder="np. Rękawice" name="offerSubCategory" value='<?= $offer->subcategory ?>'>
+                                <select class="form-control" id="offerSubCategory" name="offerSubCategory">
+                                    <option>====OCHRONA====</option>
+                                    <option value="szczęki">Szczęki bokserskie</option>
+                                    <option value="suspensory">Suspensory</option>
+                                    <option value="piszczele">Ochrona piszczeli</option>
+                                    <option value="kolana">Ochrona kolan</option>
+                                    <option>====TRENING====</option>
+                                    <option value="rękawice">Rękawice bokserskie</option>
+                                    <option value="skakanki">Skakanki</option> 
+                                    <option>====OBUWIE====</option>
+                                    <option value="buty bokserskie">Buty bokserskie</option>
+                                    <option value="skarpety bokserskie">Skarpety bokserskie</option> 
+                                    <option>====ODZIEŻ====</option>
+                                    <option value="bluzy">Bluzy</option>
+                                    <option value="czapki">Czapki</option>
+                                    <option value="rushguardy">Rushguardy</option> 
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -65,14 +87,15 @@
                         <div class="form-group">
                             <div class="col-sm-10">
                                 <label for="offer-description" class="storeLabel">Szczegółowy opis produktu:</label>
-                                <textarea id="offerDescription" name="offerDescription" value=<?= $offer->description ?>></textarea>
+                                <textarea id="offerDescription" name="offerDescription" value=<?= $offer->description ?> ></textarea>
                             </div>
                         </div>
                     </div>
                     <input type="hidden" name="offer_id" value=<?= $offer_id ?>>
-                    <input type="submit" class="btn btn-primary marginTop" value="Wystaw ofertę">
+                    <input type="submit" class="btn btn-primary marginTop" value="Zapisz zmiany">
                 </form>
                 <button class="btn btn-primary marginTop" onclick="testVal()">Sprawdź wygląd oferty</button>
+                </div>
             </div>
                 <div class="showOfferView">
                 <header style="border-bottom: none; padding-left: 10px;" id="offerTitleEx">Tytuł</header>

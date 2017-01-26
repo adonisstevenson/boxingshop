@@ -50,6 +50,16 @@
 			<?= $this->session->opinion_success; ?>
 		</div>
 		<?php } ?>
+		<?php if($this->session->has_userdata('edit_success')): ?>
+		<div class="alert alert-success">
+			<?= $this->session->edit_success; ?>
+		</div>
+		<?php endif; ?>
+		<?php if($this->session->has_userdata('edit_error')): ?>
+		<div class="alert alert-danger">
+			<?= $this->session->edit_error; ?>
+		</div>
+		<?php endif; ?>
 		<header style="border-bottom: none; padding-left: 10px;"><?= $query->title ?></header>
 		<div class="col-sm-5 product-photo">
 			<img src=<?= $query->photo ?> width="100%">

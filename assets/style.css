@@ -319,6 +319,7 @@ width: 100%;
 .category-box{
 	position: relative;
 	overflow: hidden;
+	background-color: none;
 	max-height: 350px;
 	overflow: hidden;
 }
@@ -391,6 +392,9 @@ width: 100%;
 	font-size: 15px !important;
 	border-bottom: 1px solid rgba(255, 255, 255, 0.8);
 	font-weight: bold;
+}
+.clearMarginLeft{
+	margin-left: 0px !important;
 }
 .product-photo{
 	z-index: 50;

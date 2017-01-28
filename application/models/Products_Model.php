@@ -92,6 +92,7 @@ class Products_Model extends CI_Model
 		$offer_id = $this->getOfferIdByTitle(urldecode($title));
 
 		$this->db->where('offer_id', $offer_id);
+		$this->db->where('status', "available");
 		$this->db->from('products');
 
 		$result = $this->db->count_all_results();
@@ -145,6 +146,7 @@ class Products_Model extends CI_Model
 	public function getProductsQuantityById(){
 
 		$this->db->where('offer_id', $this->offer_id);
+		$this->db->where('status', 'available');
 		$this->db->from('products');
 
 		$result = $this->db->count_all_results();
@@ -217,5 +219,18 @@ class Products_Model extends CI_Model
 		$get = $this->db->get_where('subcategories', array('category'=>$this->category));
 
 		return $get;
+	}
+	public function setOrderedBy(){
+
+		$data = array(
+					'status'=>$this->status,
+					'ordered_by'=>$this->ordered_by
+
+						);
+		
+		$this->db->where('offer_id', $this->offer_id);
+		$this->db->where('status', "available");
+		$this->db->limit($this->quantity);
+		$this->db->update('products', $data);
 	}
 }

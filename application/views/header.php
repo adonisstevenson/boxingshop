@@ -54,7 +54,71 @@
             </div>
         </div>
         <div class="cart">
-                <i class="material-icons" style="font-size: 60px; color: white; width: 100%;">shopping_cart</i>
+                <i class="material-icons" id="cart-icon" data-toggle="modal" data-target="#cart" style="font-size: 60px; color: white;">shopping_cart</i>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Twój koszyk</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Produkt</th>
+                        <th>Cena</th>
+                        <th>Ilość</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Szczęka bokserska Everlast</td>
+                        <td>120PLN</td>
+                        <td>1</td>
+                        <td>
+                           <input type="checkbox" value="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Mary</td>
+                        <td>Moe</td>
+                        <td>2</td>
+                        <td>
+                            <input type="checkbox" value="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>July</td>
+                        <td>Dooley</td>
+                        <td>3</td>
+                        <td>
+                            <input type="checkbox" value="">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Suma:</th>
+                        <th>200PLN</th>
+                    </tr>
+                    </thead>
+
+                </table>
+            </div>
+            <div class="modal-footer">
+                <center>
+                    <button type="button" class="btn" data-dismiss="modal">Kup zaznaczone</button>
+                    <button type="button" class="btn" data-dismiss="modal">Usuń zaznaczone</button>
+                </center>
+            </div>
+            </div>
+        </div>
         </div>
     </div>
 </nav>
@@ -69,7 +133,7 @@
              <a href=<?= base_url() ?>>GŁÓWNA</a>
           </li>
        <?php  } ?>
-       <?php if(isset($category) && $category=="defense"){ ?>
+       <?php if(isset($category) && $category=="obrona"){ ?>
         <li class="mainOption">
              <a href=<?= base_url().'sklep/obrona' ?>>OCHRONA</a>
         </li>
@@ -78,7 +142,7 @@
              <a href=<?= base_url().'sklep/obrona' ?>>OCHRONA</a>
           </li>
        <?php  } ?>
-       <?php if(isset($category) && $category=="training"){ ?>
+       <?php if(isset($category) && $category=="trening"){ ?>
         <li class="mainOption">
              <a href=<?= base_url().'sklep/trening' ?>>TRENING</a>
         </li>
@@ -87,7 +151,7 @@
              <a href=<?= base_url().'sklep/trening' ?>>TRENING</a>
           </li>
        <?php  } ?>
-       <?php if(isset($category) && $category=="shoes"){ ?>
+       <?php if(isset($category) && $category=="obuwie"){ ?>
         <li class="mainOption">
              <a href=<?= base_url().'sklep/obuwie' ?>>OBUWIE</a>
         </li>
@@ -96,7 +160,7 @@
              <a href=<?= base_url().'sklep/obuwie' ?>>OBUWIE</a>
           </li>
        <?php  } ?>
-       <?php if(isset($category) && $category=="clothes"){ ?>
+       <?php if(isset($category) && $category=="ciuchy"){ ?>
         <li class="mainOption">
              <a href=<?= base_url().'sklep/ciuchy' ?>>ODZIEŻ</a>
         </li>

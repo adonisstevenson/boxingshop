@@ -62,6 +62,7 @@ $route['usunkomentarz/(:any)'] = 'Admin/deleteComment/$1';
 $route['usunoferte']['post'] = 'Admin/deleteOffer';
 $route['edytujoferte']['post'] = 'Admin/editOffer';
 $route['edytuj']['post'] = 'Admin/doEdit';
+$route['do_koszyka']['post'] = 'Cart/addItem';
 $route['testform'] = 'Home/testform';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

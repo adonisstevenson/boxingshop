@@ -30,6 +30,11 @@ function hideComment(id, url){
   
 }
 
+$(document).ready(function(){
+	$('.productList').fadeIn();
+
+
+});
 
 $('#testForm').submit(function(event){
 	event.preventDefault();

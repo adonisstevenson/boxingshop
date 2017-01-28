@@ -60,6 +60,16 @@
 			<?= $this->session->edit_error; ?>
 		</div>
 		<?php endif; ?>
+		<?php if($this->session->has_userdata('cart_success')): ?>
+		<div class="alert alert-success">
+			<?= $this->session->cart_success; ?>
+		</div>
+		<?php endif; ?>
+		<?php if($this->session->has_userdata('cart_error')): ?>
+		<div class="alert alert-danger">
+			<?= $this->session->cart_error; ?>
+		</div>
+		<?php endif; ?>
 		<header style="border-bottom: none; padding-left: 10px;"><?= $query->title ?></header>
 		<div class="col-sm-5 product-photo">
 			<img src=<?= $query->photo ?> width="100%">
@@ -84,13 +94,15 @@
 		</div>
 		<div class="col-sm-7 product-data">
 			<div class="well">
-				<center><h2><?= $query->current_price."zł/szt." ?> <small><s><?= $query->previous_price ?></s></small></h2></center>
+				<center><h2><?= $query->current_price."zł/szt." ?> <small><s><?= $query->previous_price ?></s></small></h2><small><?= $quantity ?> sztuk</small></center>
 					<?php if($quantity>0){ ?>
 						<div class="cart-flex">
 							<i class="material-icons icon-large">add_shopping_cart</i>
-							<form>
+							<form method="POST" action=<?= base_url()."do_koszyka" ?>>
+								<input type="hidden" name="offer_id" value=<?= $query->id ?>>
+								<input type="hidden" name="max_quantity" value=<?= $quantity ?>>
 								<input type="text" name="quantity" class="cart-quantity form-control" value="1"></input><br><br>
-								<input type="submit" class="btn btn-primary" value="+"></input>
+								<input type="submit" class="btn btn-primary buttonWidth" value="+"></input>
 							</form>
 							<div style="clear: both;"></div>
 						</div>
@@ -110,14 +122,13 @@
 					<?php foreach($comments->result() as $comment){ ?>
 					<div class="opinion" id=<?= $comment->id ?>>
 						<div class="opinion-user">
-						<img src="http://vignette3.wikia.nocookie.net/the-enigma-corporation/images/0/01/Users-User-icon.png/revision/latest?cb=20140213102228" width="60px">
+						<img src="http://i.imgur.com/eOz6nmt.png" width="55px">
 						<?= $comment->author; ?>
 					</div>
 					<div class="opinion-content">
 						<div class="opinion-content-date"><?= date("Y-m-d H:i", $comment->date) ?></div>
 						<div class="opinionRate">
-							<i class="material-icons colorGreen">thumb_up</i>
-							<i class="material-icons cursorPointer" onclick="hideComment(<?= $comment->id ?>, '<?= base_url() ?>')">delete</i>
+							<i class="material-icons cursorPointer" style="color:white;" onclick="hideComment(<?= $comment->id ?>, '<?= base_url() ?>')">delete</i>
 						</div>
 						<?= $comment->comment; ?>
 					</div>

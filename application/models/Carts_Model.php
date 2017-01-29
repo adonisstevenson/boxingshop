@@ -10,6 +10,7 @@ class Carts_Model extends CI_Model
 	public $product_id;
 	public $offer_id;
 	public $owner;
+	public $quantity;
 
 	function __construct()
 	{
@@ -34,9 +35,21 @@ class Carts_Model extends CI_Model
 			$this->db->set('owner', $this->owner);
 			$this->db->set('offer_id', $this->offer_id);
 			$this->db->set('product_id', $row->id);
+			$this->db->set('quantity', $this->quantity);
 			$this->db->insert('carts');
 		}
-		
+
+	}
+	public function getCartItemsByLogin(){
+
+		$this->db->distinct();
+		$this->db->select('carts.quantity, offers.title, offers.current_price, carts.offer_id');
+		$this->db->where('owner', $this->owner);
+		$this->db->from('carts');
+		$this->db->join('offers', 'offers.id = carts.offer_id');
+		$get = $this->db->get();
+
+		return $get;
 	}
 
 }

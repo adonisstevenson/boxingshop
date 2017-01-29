@@ -54,7 +54,7 @@
             </div>
         </div>
         <div class="cart">
-                <i class="material-icons" id="cart-icon" data-toggle="modal" data-target="#cart" style="font-size: 60px; color: white;">shopping_cart</i>
+                <i class="material-icons" id="cart-icon" data-toggle="modal" data-target="#cart" style="font-size: 60px; color: white;" onclick="getCartItems('<?= base_url() ?>')">shopping_cart</i>
         </div>
         <!-- Modal -->
         <div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -65,51 +65,7 @@
                 <h4 class="modal-title" id="myModalLabel">Twój koszyk</h4>
             </div>
             <div class="modal-body">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Produkt</th>
-                        <th>Cena</th>
-                        <th>Ilość</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Szczęka bokserska Everlast</td>
-                        <td>120PLN</td>
-                        <td>1</td>
-                        <td>
-                           <input type="checkbox" value="">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Mary</td>
-                        <td>Moe</td>
-                        <td>2</td>
-                        <td>
-                            <input type="checkbox" value="">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>July</td>
-                        <td>Dooley</td>
-                        <td>3</td>
-                        <td>
-                            <input type="checkbox" value="">
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Suma:</th>
-                        <th>200PLN</th>
-                    </tr>
-                    </thead>
-
-                </table>
+               
             </div>
             <div class="modal-footer">
                 <center>

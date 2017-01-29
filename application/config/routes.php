@@ -64,5 +64,6 @@ $route['edytujoferte']['post'] = 'Admin/editOffer';
 $route['edytuj']['post'] = 'Admin/doEdit';
 $route['do_koszyka']['post'] = 'Cart/addItem';
 $route['testform'] = 'Home/testform';
+$route['koszyk_lista'] = 'Cart/getCartList';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

@@ -32,6 +32,7 @@ class Cart extends CI_Controller {
 
                     $this->cart->offer_id = $this->input->post('offer_id');
                     $this->cart->owner = $this->session->login;
+                    $this->cart->quantity = $this->input->post('quantity');
                     $this->cart->addItems();
                     
                     $this->load->library('user_agent');
@@ -43,6 +44,16 @@ class Cart extends CI_Controller {
            }
        }
 
+   }
+   public function getCartList(){
+       if($this->session->has_userdata('login')){//logged in user
+            $this->cart->owner = $this->session->login;
+            $data['cart'] = $this->cart->getCartItemsByLogin();
+
+            $this->load->view('Load/Cart', $data);
+       }else{
+           $this->load->view('Load/Cart');
+       }
    }
 
 	

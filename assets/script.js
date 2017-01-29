@@ -32,9 +32,18 @@ function hideComment(id, url){
 
 $(document).ready(function(){
 	$('.productList').fadeIn();
-
-
 });
+
+function getCartItems(url){
+	$.get( url+"koszyk_lista", function( data ) {
+		$( ".modal-body" ).html( data );
+	});
+}
+
+//$('.cart').click(function(){
+	
+	//$('.modal-body').load( "assets/load/Cart.php");
+//});
 
 $('#testForm').submit(function(event){
 	event.preventDefault();

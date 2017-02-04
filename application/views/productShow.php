@@ -3,9 +3,10 @@
 	<title>Dadad</title>
 	
 </head>
-<body>
+<body style="position: relative">
+	<div class="darkBox"></div>
 	<?php if($this->session->has_userdata('rank') && $this->session->rank == "admin"){ ?>
-	<div class="adminEditPanel">
+	<div class="adminEditPanel hidden-xs">
 		<div class="editPanelRow editPanelHeader">
 			Admin
 		</div>
@@ -39,7 +40,7 @@
 		</div>
 		</div>
 	<?php } ?>
-	<div class="container">
+	<div class="container" style="position: relative">
 		<?php if($this->session->has_userdata('opinion')) {?>
 		<div class="alert alert-danger">
 			<?= $this->session->opinion; ?>
@@ -71,27 +72,19 @@
 		</div>
 		<?php endif; ?>
 		<header style="border-bottom: none; padding-left: 10px;"><?= $query->title ?></header>
-		<div class="col-sm-5 product-photo">
-			<img src=<?= $query->photo ?> width="100%">
-			<div class="product-photo-list">
-				<div class="product-photo-list-element paddingright">
-					<img src="http://seka-sports.com/image/cache/data/ADIBT01-RD-1-500x500.jpg" width="100%">
+		<div class="col-sm-5 product-photo" onclick="popupPhoto()">
+			<img src=<?= $query->photo ?> width="100%" style="cursor: pointer">
+		</div>
+		<!-- popup window -->
+		<div class="col-sm-7 col-sm-offset-2 popupPhoto">
+			<div class="well">
+				<div class="popupPhotoHeader">
+					<i class="material-icons" style="cursor: pointer" onclick="closePopupPhoto()">close</i>
 				</div>
-				<div class="product-photo-list-element paddingright">
-					<img src="http://seka-sports.com/image/cache/data/ADIBT01-RD-1-500x500.jpg" width="100%">
-				</div>
-				<div class="product-photo-list-element paddingright">
-					<img src="http://seka-sports.com/image/cache/data/ADIBT01-RD-1-500x500.jpg" width="100%">
-				</div>
-				<div class="product-photo-list-element paddingright">
-					<img src="http://seka-sports.com/image/cache/data/ADIBT01-RD-1-500x500.jpg" width="100%">
-				</div>
-				<div class="product-photo-list-element paddingleft">
-					<img src="http://seka-sports.com/image/cache/data/ADIBT01-RD-1-500x500.jpg" width="100%">
-				</div>
-				<div style="clear: both;"></div>
+				<img src=<?= $query->photo ?> width="100%">
 			</div>
 		</div>
+		<!-- popup window -->
 		<div class="col-sm-7 product-data">
 			<div class="well">
 				<center><h2><?= $query->current_price."zł/szt." ?> <small><s><?= $query->previous_price ?></s></small></h2><small><?= $quantity ?> sztuk</small></center>
@@ -122,14 +115,16 @@
 					<?php foreach($comments->result() as $comment){ ?>
 					<div class="opinion" id=<?= $comment->id ?>>
 						<div class="opinion-user">
-						<img src="http://i.imgur.com/eOz6nmt.png" width="55px">
+						<img src=<?= base_url().'assets/usercomment.png' ?> width="55px">
 						<?= $comment->author; ?>
 					</div>
 					<div class="opinion-content">
 						<div class="opinion-content-date"><?= date("Y-m-d H:i", $comment->date) ?></div>
+						<?php if($this->session->has_userdata('rank') && $this->session->rank = "admin"){ ?>
 						<div class="opinionRate">
-							<i class="material-icons cursorPointer" style="color:white;" onclick="hideComment(<?= $comment->id ?>, '<?= base_url() ?>')">delete</i>
+							<i class="material-icons cursorPointer" style="color:gray;" onclick="hideComment(<?= $comment->id ?>, '<?= base_url() ?>')">delete</i>
 						</div>
+						<?php } ?>
 						<?= $comment->comment; ?>
 					</div>
 					<div style="clear: both;"></div>
@@ -145,7 +140,7 @@
 		<div class="row">
 			<div class="col-sm-12">
 				<form action=<?= base_url()."opinia/".$query->id ?> method="POST">
-					<div class="form-group">
+					<div class="form-group marginLeft">
 						<textarea class="form-control" rows="5" id="comment" name="comment"></textarea>
 					</div>
 					<div class="form-group">
@@ -155,7 +150,7 @@
 			</div>
 		</div>
 		<?php }else{ ?>
-			<i>Aby dodać opinie do produktu, musisz być zalogowany</i>
+			<span style="padding-left:5px"> <i>Aby dodać opinie do produktu, musisz być zalogowany</i> </span>
 		<?php } ?>
 		<div class="row">
 			<div class="col-sm-12">
@@ -177,10 +172,6 @@
 		<?php } ?>
 			</div>
 		</div>
-		<form id="testForm2">
-			<input type="text" name="text">
-			<input type="submit" class="btn btn-primary" value="GO!">
-		</form>
 	</div>
 </body>
 </html>

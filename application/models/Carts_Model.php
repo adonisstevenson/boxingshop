@@ -52,4 +52,26 @@ class Carts_Model extends CI_Model
 		return $get;
 	}
 
+	public function deleteFromCartByArray($data){
+
+		foreach ($data as $row){
+			//delete from cart
+			$this->db->where('owner', $this->owner);
+		    $this->db->where('offer_id', $row);
+	 	    $this->db->delete('carts');
+			
+			//update products, whose status were ordered, etc
+			$dataToUpdate = array(
+					'status' => "available",
+					'ordered_by' => NULL
+			);
+
+			$this->db->where('ordered_by', $this->owner);
+			$this->db->where('offer_id', $row);
+			$this->db->update('products', $dataToUpdate);
+		}
+
+		return TRUE;
+	}
+
 }

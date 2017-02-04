@@ -28,6 +28,7 @@ class Products_Model extends CI_Model
 	//categories
 	public $category_id;
 	public $category_name;
+	public $subcategory_title;
 
 	function __construct()
 	{
@@ -37,6 +38,13 @@ class Products_Model extends CI_Model
 	public function getElementsByCategory($category){
 
 		$query = $this->db->get_where('offers', array('category' => $category), 12, 0);
+
+		return $query;
+	}
+
+	public function getElementsBySubCategory($subcategory){
+
+		$query = $this->db->get_where('offers', array('subcategory' => $subcategory), 12, 0);
 
 		return $query;
 	}
@@ -200,7 +208,12 @@ class Products_Model extends CI_Model
 
 		return $price;
 	}
+	public function convertTitleToSubCategory(){
+		$convert = $this->db->get_where('subcategories', array('title'=>$this->subcategory_title));
+		$result = $convert->row();
 
+		return $result->subcategory;
+	}
 	public function findByCategory(){
 		//$this->category_name;
 
@@ -209,6 +222,26 @@ class Products_Model extends CI_Model
 		if($check->num_rows()>0){
 
 		$offers = $this->getElementsByCategory($this->category);
+
+		return $offers;
+			
+		}else return FALSE;
+	}
+	public function findBySubCategory($order=NULL){
+			
+		$check = $this->db->get_where('subcategories', array('subcategory'=>$this->subcategory));
+
+		if($check->num_rows()>0){
+			if($order!=NULL){
+
+			if($order == "title") $this->db->order_by($order);
+			elseif ($order == "title desc") $this->db->order_by('title', 'DESC');
+			elseif ($order == "current_price") $this->db->order_by($order);
+			elseif ($order == "current_price desc") $this->db->order_by('current_price', 'DESC');
+
+		}
+
+		$offers = $this->getElementsBySubCategory($this->subcategory);
 
 		return $offers;
 			
@@ -231,6 +264,8 @@ class Products_Model extends CI_Model
 		$this->db->where('offer_id', $this->offer_id);
 		$this->db->where('status', "available");
 		$this->db->limit($this->quantity);
-		$this->db->update('products', $data);
+		if($this->db->update('products', $data)){
+			return TRUE;
+		}else return FALSE;
 	}
 }

@@ -7,6 +7,7 @@ class User_Model extends CI_Model
 {
 	
 	public $id;
+	public $cookie_id;
 	public $login;
 	public $password;
 	public $rank;
@@ -36,5 +37,12 @@ class User_Model extends CI_Model
 		$rank = $query->rank;
 		
 		return $rank;
+	}
+
+	public function createCookieUserWithID(){
+		$this->db->insert('users', array('cookie'=>1));
+		$id = $this->db->insert_id();
+
+		return $id;
 	}
 }

@@ -39,8 +39,21 @@ class Home extends CI_Controller {
 			show_404();
 		}
 	}
-	public function testform(){
-		$data = array('one'=>"onsae", 'two'=>"two");
-		echo json_encode($data);
+	public function showBySubcategory($category, $subcategory){
+
+		$this->products->subcategory_title = $subcategory;
+		$subcategory_pl = $this->products->convertTitleToSubCategory();	
+
+		$this->products->category = $category;
+		$this->products->subcategory = $subcategory_pl;
+
+		if($checkCat = $this->products->findByCategory() && $data['offers'] = $this->products->findBySubCategory()){ // if inserted category exists
+			if($this->input->get('sortby')) $data['offers'] = $this->products->findBySubCategory($this->input->get('sortby'));
+			$data['title'] = 'Boxingshop || Produkty';
+			$data['subcategory'] = $subcategory_pl;
+			$this->load->view('header', $data);
+			$this->load->view('category', $data);
+			$this->load->view('footer');
+		}else show_404();
 	}
 }

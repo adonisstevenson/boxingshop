@@ -16,7 +16,7 @@
                         <td><?= $row->current_price ?>PLN</td>
                         <td><?= $row->quantity ?></td>
                         <td>
-                           <input type="checkbox" value=<?= $row->offer_id ?>>
+                           <input type="checkbox" name="check" class="checkbox" value=<?= $row->offer_id ?>>
                         </td>
                     </tr>
                     <?php endforeach; ?>

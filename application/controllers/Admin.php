@@ -22,9 +22,29 @@ class Admin extends CI_Controller {
 
 	function index()
 	{	
+		$points = [100, 400, 80, 10, 124, 350, 450];
+		$newpoints = [];
+		$max = 500;
+		$data['maxPer'] = $max/10;
+		$arrayNum = 0;
+		foreach ($points as $point) {
+
+			$point = $point/$max;
+			$point = $point*300;
+			$point = 360 - $point;
+
+			$newpoints[$arrayNum] = $point;
+			$arrayNum++;
+		}
+		
+		$data['points'] = $newpoints;
+		$data['realValue'] = $points;
+		$data['startX'] = 5;
+		$data['startY'] = 45;
+		$data['max'] = $max;
 		$data['title'] = 'Boxingshop || Panel Administracyjny';
 		$this->load->view('header', $data);
-		$this->load->view('admin/dashboard');
+		$this->load->view('admin/dashboard', $data);
 		$this->load->view('footer');
 	}
 

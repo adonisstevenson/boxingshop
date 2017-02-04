@@ -11,8 +11,6 @@ function moveforward(current, next){
 			$('.slide-'+current).css('display', 'none');
 				if(slide==8) slide=2;
 				else slide+=2;
-
-				console.log(slide);
 			});
 		}
 
@@ -29,14 +27,54 @@ function hideComment(id, url){
 	});
   
 }
+	$(document).ready(function(){
+			setTimeout(function() {
+				$('.productList').css('opacity', '1');
+			}, 10);
+		});
 
-$(document).ready(function(){
-	$('.productList').fadeIn();
-});
+
 
 function getCartItems(url){
 	$.get( url+"koszyk_lista", function( data ) {
 		$( ".modal-body" ).html( data );
+	});
+}
+function delSelected(url){
+	var checked = [];
+	$("input:checkbox[name=check]:checked").each(function(){
+		checked.push($(this).val());
+	});
+
+	var jsonString = JSON.stringify(checked);
+
+	$.ajax({
+		type: "POST",
+		url: url+'koszyk_usun',
+		data: {data:jsonString},
+		error: function(response) { alert(response) },
+		success: function(response) {
+			 alert(response);
+		}
+	});
+
+}
+
+function popupPhoto(){
+	var popupPosition = $('.popupPhoto').position();
+	var popupTop = popupPosition.top;
+	console.log(popupTop);
+
+	$('html, body').animate({scrollTop: 100 });
+
+	$('.darkBox').css('display', 'block');
+	$('.popupPhoto').css('display', 'block').animate({opacity: '1'}, 100);
+	
+}
+function closePopupPhoto(){
+	$('.popupPhoto').animate({opacity: '0'}, 100, function(){
+		$('.darkBox').css('display', 'none');
+		$('.popupPhoto').css('display', 'none');
 	});
 }
 

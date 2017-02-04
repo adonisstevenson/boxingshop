@@ -7,7 +7,9 @@
 		<div class="row">
 				<?php foreach($subCategories->result() as $subCategory){ ?>
 				<div class="col-sm-4 col-xs-12 category-box">
-						<img src=<?= $subCategory->photo ?> width="100%">
+						<a href=<?= base_url().'sklep/'.$category.'/'.$subCategory->title ?>>
+							<img src=<?= $subCategory->photo ?> width="100%">
+						</a>
 						<div class="category-title">
 							<?= mb_strtoupper($subCategory->subcategory, "UTF-8") ?>
 						</div>
@@ -35,5 +37,6 @@
 			<?php } ?>
 		</div>
 	</div>
+
 </body>
 </html>

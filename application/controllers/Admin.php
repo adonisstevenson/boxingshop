@@ -10,6 +10,7 @@ class Admin extends CI_Controller {
         }
 		$this->load->model('Products_Model', 'products');
 		$this->load->model('User_Model', 'user');
+		$this->load->model('Todos_Model', 'todos');
 	}
 
 	private function getCartItems(){
@@ -22,9 +23,12 @@ class Admin extends CI_Controller {
 
 	function index()
 	{	
-		$points = [100, 400, 80, 10, 124, 350, 450];
+		$points = [100, 400, 80, 10, 1000, 550, 450];
 		$newpoints = [];
-		$max = 500;
+		$maxArray = max($points);
+		if($maxArray>100 && $maxArray<500) $max = 500;
+		if($maxArray>500 && $maxArray<800) $max = 800;
+		if($maxArray>800 && $maxArray<1200) $max = 1200;
 		$data['maxPer'] = $max/10;
 		$arrayNum = 0;
 		foreach ($points as $point) {
@@ -39,10 +43,13 @@ class Admin extends CI_Controller {
 		
 		$data['points'] = $newpoints;
 		$data['realValue'] = $points;
-		$data['startX'] = 5;
+		$data['startX'] = 7;
 		$data['startY'] = 45;
 		$data['max'] = $max;
 		$data['title'] = 'Boxingshop || Panel Administracyjny';
+
+		$data['todos'] = $this->todos->getAllTodos();
+
 		$this->load->view('header', $data);
 		$this->load->view('admin/dashboard', $data);
 		$this->load->view('footer');
@@ -50,6 +57,7 @@ class Admin extends CI_Controller {
 
 	public function storeOffer(){
 		$data['title'] = 'Boxingshop || Dodaj ofertę';
+		$data['subcategories'] = $this->products->getAllSubcategories();
 		$this->load->view('header', $data);
 		$this->load->view('admin/storeOffer');
 		$this->load->view('footer');
@@ -59,10 +67,9 @@ class Admin extends CI_Controller {
 		$this->load->library('form_validation');
 
 		$this->form_validation->set_rules('offerTitle', 'Title', 'required|min_length[5]|max_length[100]');
+		$this->form_validation->set_rules('offerBrand', 'Title', 'required|min_length[5]|max_length[100]');
 		$this->form_validation->set_rules('offerDescription', 'Desc', 'required|min_length[5]');
 		$this->form_validation->set_rules('offerPrice', 'Price', 'required|integer');
-		$this->form_validation->set_rules('offerCategory', 'Category', 'required|min_length[5]|max_length[50]');
-		$this->form_validation->set_rules('offerSubCategory', 'SubCategory', 'required|min_length[5]|max_length[50]');
 		$this->form_validation->set_rules('offerPhoto', 'Link to photo', 'required|min_length[5]|max_length[1000]');
 		$this->form_validation->set_rules('offerQuantity', 'Quantity of products', 'required|integer');
 
@@ -71,9 +78,9 @@ class Admin extends CI_Controller {
 			 $this->session->set_flashdata('addOffer', 'Wystąpił błąd podczas wypełniania formularza. Upewnij się, że wszystkie pola wypełniłeś zgodnie z poleceniami, bądź nie pozostawiłeś ich pustych');
 			 redirect($this->agent->referrer());
 		}else{
+				$this->products->brand = $this->input->post('offerBrand');
 				$this->products->title = $this->input->post('offerTitle');
 				$this->products->description = $this->input->post('offerDescription');
-		$this->products->category = $this->input->post('offerCategory');
 				$this->products->subcategory = $this->input->post('offerSubCategory');
 				$this->products->photo = $this->input->post('offerPhoto');
 				$this->products->current_price = $this->input->post('offerPrice');
@@ -109,6 +116,7 @@ class Admin extends CI_Controller {
 		$this->products->offer_id =  $this->input->post('offer_id');
 		$data['title'] = "Boxingshop || Edytuj ofertę";
 		$data['quantity'] = $this->products->getProductsQuantityById();
+		$data['subcategories'] = $this->products->getAllSubcategories();
 		$data['offer'] = $this->products->getOfferInfoById();
 		$data['offer_id'] = $this->input->post('offer_id');
 		$this->load->view('header', $data);
@@ -122,8 +130,6 @@ class Admin extends CI_Controller {
 		$this->form_validation->set_rules('offerTitle', 'Title', 'required|min_length[5]|max_length[100]');
 		$this->form_validation->set_rules('offerDescription', 'Desc', 'required|min_length[5]');
 		$this->form_validation->set_rules('offerPrice', 'Price', 'required|integer');
-		$this->form_validation->set_rules('offerCategory', 'Category', 'required|min_length[5]|max_length[50]');
-		$this->form_validation->set_rules('offerSubCategory', 'SubCategory', 'required|min_length[5]|max_length[50]');
 		$this->form_validation->set_rules('offerPhoto', 'Link to photo', 'required|min_length[5]|max_length[1000]');
 		$this->form_validation->set_rules('offerQuantity', 'Quantity of products', 'required|integer|greater_than[-1]');
 
@@ -135,7 +141,6 @@ class Admin extends CI_Controller {
 				$this->products->offer_id = $this->input->post('offer_id');
 				$this->products->title = $this->input->post('offerTitle');
 				$this->products->description = $this->input->post('offerDescription');
-				$this->products->category = $this->input->post('offerCategory');
 				$this->products->subcategory = $this->input->post('offerSubCategory');
 				$this->products->photo = $this->input->post('offerPhoto');
 				$this->products->current_price = $this->input->post('offerPrice');
@@ -152,6 +157,13 @@ class Admin extends CI_Controller {
 
 			}
 
+	}
+	public function delTodo($todoID){
+		$this->todos->id = $todoID;
+
+		if(!$this->todos->delTodoByID()){
+			echo 0;
+		}else echo 1;
 	}
 
 	

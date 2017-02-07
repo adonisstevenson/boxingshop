@@ -81,49 +81,60 @@
     </div>
 </nav>
 <nav class="lower-navbar">
-    <div class="container noPadding">
+    <div class="container noPadding" style="position:relative;">
+        <div class="hidden-md hidden-sm hidden-lg">
+            <li id="mobNav">
+                <i class="material-icons">view_headline</i>
+            </li>
+            <div class="mobileNav">
+                <li class="mobileLi">GŁÓWNA</li>
+                <li class="mobileLi">TRENING</li>
+                <li class="mobileLi">OBUWIE</li>
+                <li class="mobileLi">ODZIEŻ</li>
+            </div>
+        </div>
       <?php if(isset($category) && $category=="index"){ ?>
-        <li class="mainOption">
+        <li class="mainOption hidden-xs">
              <a href=<?= base_url() ?>>GŁÓWNA</a>
         </li>
       <?php }else{ ?>
-          <li>
+          <li class="hidden-xs">
              <a href=<?= base_url() ?>>GŁÓWNA</a>
           </li>
        <?php  } ?>
        <?php if(isset($category) && $category=="obrona"){ ?>
-        <li class="mainOption">
+        <li class="mainOption hidden-xs">
              <a href=<?= base_url().'sklep/obrona' ?>>OCHRONA</a>
         </li>
       <?php }else{ ?>
-          <li>
+          <li class="hidden-xs">
              <a href=<?= base_url().'sklep/obrona' ?>>OCHRONA</a>
           </li>
        <?php  } ?>
        <?php if(isset($category) && $category=="trening"){ ?>
-        <li class="mainOption">
+        <li class="mainOption hidden-xs">
              <a href=<?= base_url().'sklep/trening' ?>>TRENING</a>
         </li>
       <?php }else{ ?>
-          <li>
+          <li class="hidden-xs">
              <a href=<?= base_url().'sklep/trening' ?>>TRENING</a>
           </li>
        <?php  } ?>
        <?php if(isset($category) && $category=="obuwie"){ ?>
-        <li class="mainOption">
+        <li class="mainOption hidden-xs">
              <a href=<?= base_url().'sklep/obuwie' ?>>OBUWIE</a>
         </li>
       <?php }else{ ?>
-          <li>
+          <li class="hidden-xs">
              <a href=<?= base_url().'sklep/obuwie' ?>>OBUWIE</a>
           </li>
        <?php  } ?>
        <?php if(isset($category) && $category=="ciuchy"){ ?>
-        <li class="mainOption">
+        <li class="mainOption hidden-xs">
              <a href=<?= base_url().'sklep/ciuchy' ?>>ODZIEŻ</a>
         </li>
       <?php }else{ ?>
-          <li>
+          <li class="hidden-xs">
              <a href=<?= base_url().'sklep/ciuchy' ?>>ODZIEŻ</a>
           </li>
        <?php  } ?>
@@ -136,9 +147,9 @@
        <?php } ?>
         <li class="nav-icons" id="navSearch"><i class="material-icons">search</i></li>
         <form class="navUserForm" method="POST" action=<?= base_url().'auth' ?>>
-            <input type="submit" value="zaloguj" class="navFormButton"> 
-            <input type="password" name="password" value="" class="navUserForm fixWidth" placeholder="hasło">
-            <input type="text" name="login" value="" class="navUserForm fixWidth" placeholder="login">
+            <input type="text" class="form-control" name="login" placeholder="Login">
+            <input type="password" class="form-control" name="password" placeholder="Hasło">
+            <button class="btn btn-default">Zaloguj</button>
         </form>
     </div>
 </nav>

@@ -1,7 +1,10 @@
 <html>
 <head>
 	<title>Dadad</title>
-	
+	<script type="text/javascript">
+   		var base_url = '<?= base_url() ?>';
+		var offerID = <?= $query->id ?>;
+	</script>
 </head>
 <body style="position: relative">
 	<div class="darkBox"></div>
@@ -77,7 +80,7 @@
 		</div>
 		<!-- popup window -->
 		<div class="col-sm-7 col-sm-offset-2 popupPhoto">
-			<div class="well">
+			<div class="well">			
 				<div class="popupPhotoHeader">
 					<i class="material-icons" style="cursor: pointer" onclick="closePopupPhoto()">close</i>
 				</div>
@@ -86,7 +89,23 @@
 		</div>
 		<!-- popup window -->
 		<div class="col-sm-7 product-data">
-			<div class="well">
+			<div class="well" style="position: relative">
+				<div class="voteBox">
+					<?php if(!get_cookie('has_voted_'.$query->id) || get_cookie('has_voted_'.$query->id)=='down'){ ?>
+					<button class="voteButt" id="up" style="color: limegreen; width: 100%" onclick="voteUp()"><span class="glyphicon glyphicon-menu-up"> </span> </button>
+					<?php }elseif(get_cookie('has_voted_'.$query->id) && get_cookie('has_voted_'.$query->id) == 'up'){ ?>
+					<button class="voteButt" id="upDisabled" style="width: 100%"><span class="glyphicon glyphicon-menu-up"> </span> </button>
+					<?php } ?>
+					<span id="upvotes"> <?= $query->upvotes ?> </span>
+					<span id="downvotes"> <?= $query->downvotes ?> </span>
+					<?php if(!get_cookie('has_voted_'.$query->id) || get_cookie('has_voted_'.$query->id)=='up'){ ?>
+					<button class="voteButt" id="down" style="color: red; width: 100%" onclick="voteDown()"><span class="glyphicon glyphicon-menu-down"> </span> </button>
+					<?php }elseif(get_cookie('has_voted_'.$query->id) && get_cookie('has_voted_'.$query->id) == 'down'){ ?>
+					<button class="voteButt" id="downDisabled" style="width: 100%"><span class="glyphicon glyphicon-menu-down"> </span> </button>
+					<?php } ?>
+					
+					
+				</div>
 				<center><h2><?= $query->current_price."zł/szt." ?> <small><s><?= $query->previous_price ?></s></small></h2><small><?= $quantity ?> sztuk</small></center>
 					<?php if($quantity>0){ ?>
 						<div class="cart-flex">
@@ -122,7 +141,7 @@
 						<div class="opinion-content-date"><?= date("Y-m-d H:i", $comment->date) ?></div>
 						<?php if($this->session->has_userdata('rank') && $this->session->rank = "admin"){ ?>
 						<div class="opinionRate">
-							<i class="material-icons cursorPointer" style="color:gray;" onclick="hideComment(<?= $comment->id ?>, '<?= base_url() ?>')">delete</i>
+							<i class="material-icons cursorPointer" style="color:gray;" onclick="hideComment(<?= $comment->id ?>)">delete</i>
 						</div>
 						<?php } ?>
 						<?= $comment->comment; ?>
@@ -155,18 +174,24 @@
 		<div class="row">
 			<div class="col-sm-12">
 				<header>PODOBNE PRODUKTY</header>
-				<?php for ($i=1; $i <=12 ; $i++) { ?>
-			<div class="col-sm-4 col-md-3" style="padding: 5px;">
+				<?php foreach ($similar->result() as $similar) { ?>
+			<div class="col-sm-4 col-md-3 productList" style="padding: 5px;">
 			<div class="product-data-box">
 				<div class="product-data-photo">
-					<img src="http://fitbay.pl/3228-3005-thickbox/skakanka-obciazenie-red-pump.jpg" width="100%">
+					<img src=<?= $similar->photo ?> width="100%">	
+					<?php if($similar->previous_price != NULL && $similar->previous_price > $similar->current_price){ ?>
 					<div class="discount">
-					-5%
+						<?= $similar->current_price-$similar->previous_price."zł" ?>
 					</div>
+					<?php } ?>
 				</div>
-				<div class="product-data-title">
-					RĘKAWICE BOKSERSKIE ADIDAS PRO AIR
-				</div>
+				<a href=<?= base_url().'produkty/'.urlencode($similar->title) ?> style="text-decoration:none">
+						<div class="product-data-title">
+							
+								<?= mb_strtoupper($similar->title, "UTF-8") ?>
+							
+						</div>
+					</a>
 			</div>
 		</div>
 		<?php } ?>

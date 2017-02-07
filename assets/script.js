@@ -17,10 +17,10 @@ function moveforward(current, next){
 
 }
 
-function hideComment(id, url){
+function hideComment(id){
 	$('#'+id).fadeOut(250);
 	console.log(url);	
-	var jqxhr = $.get( url+"usunkomentarz/"+id, function (data){
+	var jqxhr = $.get( base_url+"usunkomentarz/"+id, function (data){
 		if(data!=''){
 			alert(data);
 		}
@@ -76,6 +76,20 @@ function closePopupPhoto(){
 		$('.darkBox').css('display', 'none');
 		$('.popupPhoto').css('display', 'none');
 	});
+}
+function delTodo(id, url){
+	console.log(id);
+	$.get( url+"usun_todo/"+id, function( data ) {
+		if(data!=1){
+			alert("Wystąpił błąd, nie udało się usunąć danych z bazy");
+		}else{
+			$('#todo-'+id).fadeOut(100);
+		}
+	}).fail(function() {
+    alert( "Wystąpił nieznany błąd");
+  	});
+	
+	
 }
 
 //$('.cart').click(function(){
@@ -280,35 +294,45 @@ setInterval(function(){
 		}
 }, mlSecondsToSlide);
 
-var clickedOnUser = 0;
+var showed = false;
+
 $('#navUser').click(function(){
-	if(clickedOnUser==0){ // if form is closed
-		OpenForm();
-		clickedOnUser=1; //tel JS that user has form opened 
-	}else{ // if form is opened
-		CloseForm();
-		clickedOnUser=0; //tel JS that user has form closed
-	}
-	
+	if(showed==false){ // then show
+		showed=true;
+		showForm();
+	}else{
+		showed = false;
+		hideForm();
+	} 
+
+	console.log(showed);
 });
 
-function OpenForm(){
-		$('#navSearch').css('display', 'none');
-		$('.navUserForm').css('display', 'block');
-		$('.fixWidth').animate({width: '150px'}, 150);
-		$('.navFormButton').animate({width: '65px'}, 150);
-
-		
+function showForm(){
+	$('.navUserForm').css('height', '2px').css('display', 'block');
+	$('.navUserForm').animate({height: '110px'}, 100);
 }
-function CloseForm(){
-	$('.fixWidth').animate({width: '0px'}, 150);
-	$('.navFormButton').animate({width: '0px'}, 150, function(){
-		$('#navSearch').css('display', 'block');
+
+function hideForm(){
+	$('.navUserForm').animate({height: '5px'}, 100, function(){
 		$('.navUserForm').css('display', 'none');
 	});
-
-	
 }
+
+var navShowed = false;
+
+$('#mobNav').click(function(){
+	if(navShowed == false){
+		$('.mobileNav').css('height', '10px').css('display', 'block');
+		$('.mobileNav').animate({height: '185px'}, 200);
+		navShowed = true;
+	}else if(navShowed == true){
+		$('.mobileNav').animate({height: '10px'}, 200, function(){
+			$('.mobileNav').css('display', 'none');
+		});
+		navShowed = false;
+	}
+});
 
 $('#navSearch').click(function(){
 	alert("user clicked");
@@ -321,6 +345,40 @@ tinymce.init({
         });
     }
 });
+
+function voteUp(){
+		var upVotes = parseInt($('#upvotes').text());
+		var downVotes = parseInt($('#downvotes').text());
+	$.get( base_url+"vote_up/"+offerID, function( data ) {
+		if(data==1){
+			$('#upvotes').html(upVotes+1);
+			$( "#up" ).replaceWith( '<button class="voteButt" id="upDisabled" style="width: 100%"><span class="glyphicon glyphicon-menu-up"> </span> </button>' );
+		}else if(data==0){
+			downVotes = downVotes-1;
+			$('#downvotes').html(downVotes);
+			$( "#downDisabled" ).replaceWith( '<button class="voteButt" id="down" style="width: 100%; color: red" onclick="voteDown()"><span class="glyphicon glyphicon-menu-down"> </span> </button>' );
+		}
+	}).fail(function() {
+    alert( "Wystąpił nieznany błąd");
+  	});
+}
+function voteDown(){
+		var upVotes = parseInt($('#upvotes').text());
+		var downVotes = parseInt($('#downvotes').text());
+
+	$.get( base_url+"vote_down/"+offerID, function( data ) {
+		if(data==1){
+			$('#downvotes').html(downVotes+1);
+			$( "#down" ).replaceWith( '<button class="voteButt" id="downDisabled" style=" width: 100%"><span class="glyphicon glyphicon-menu-down"> </span> </button>' );
+		}else if(data==0){
+			upVotes = upVotes-1;
+			$('#upvotes').html(upVotes);
+			$( "#upDisabled" ).replaceWith( '<button class="voteButt" id="up" style="width: 100%; color: limegreen" onclick="voteUp()"><span class="glyphicon glyphicon-menu-up"> </span> </button>' );
+		}
+	}).fail(function() {
+    alert( "Wystąpił nieznany błąd");
+  	});
+}
 function testVal(){
 	tinyMCE.triggerSave();
 	$('.showOfferView').css('display', 'block');

@@ -24,37 +24,20 @@
                     <div class="row">
                         <div class="form-group">
                             <div class="col-sm-6">
-                                <label for="offer-category" class="storeLabel">Kategoria:</label>
-                                <select class="form-control" id="offerCategory" name="offerCategory">
-                                    <option value="obrona">Ochrona</option>
-                                    <option value="trening">Trening</option>
-                                    <option value="obuwie">Obuwie</option>
-                                    <option value="ciuchy">Odzież</option>
+                                <label for="offer-subcategory" class="storeLabel">Podkategoria:</label>
+                                <select class="form-control" id="offerSubCategory" name="offerSubCategory">
+                                    <?php foreach($subcategories->result() as $subcategory){ ?>
+                                        <option value='<?= $subcategory->subcategory ?>'><?= $subcategory->subcategory ?></option>
+                                    <?php } ?>
                                 </select>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group">
-                           <div class="col-sm-6">
-                                <label for="offer-subcategory" class="storeLabel">Podkategoria:</label>
-                                <select class="form-control" id="offerSubCategory" name="offerSubCategory">
-                                    <option>====OCHRONA====</option>
-                                    <option value="szczęki">Szczęki bokserskie</option>
-                                    <option value="suspensory">Suspensory</option>
-                                    <option value="piszczele">Ochrona piszczeli</option>
-                                    <option value="kolana">Ochrona kolan</option>
-                                    <option>====TRENING====</option>
-                                    <option value="rękawice">Rękawice bokserskie</option>
-                                    <option value="skakanki">Skakanki</option> 
-                                    <option>====OBUWIE====</option>
-                                    <option value="buty bokserskie">Buty bokserskie</option>
-                                    <option value="skarpety bokserskie">Skarpety bokserskie</option> 
-                                    <option>====ODZIEŻ====</option>
-                                    <option value="bluzy">Bluzy</option>
-                                    <option value="czapki">Czapki</option>
-                                    <option value="rushguardy">Rushguardy</option>  
-                                </select>
+                            <div class="col-sm-6">
+                                <label for="offer-brand" class="storeLabel">Marka:</label>
+                                <input type="text" class="form-control" id="offerBrand" name="offerBrand">
                             </div>
                         </div>
                     </div>

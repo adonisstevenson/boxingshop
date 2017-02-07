@@ -16,6 +16,10 @@
                         <option value="current_price">rosnąco</option>
                         <option value="current_price desc">malejąco</option>
                     </optgroup>
+                    <optgroup label="marka">
+                        <option value="title">najpopularniejsze</option>
+                        <option value="title desc">najwyżej oceniane</option>
+                    </optgroup>
                     <optgroup label="alfabetycznie">
                         <option value="title">A-Z</option>
                         <option value="title desc">Z-A</option>

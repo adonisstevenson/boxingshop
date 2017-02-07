@@ -13,6 +13,7 @@ class Products_Model extends CI_Model
 	public $category;
 	public $subcategory;
 	public $photo;
+	public $brand;
 	public $current_price;
 	public $previous_price;
 	//products
@@ -48,12 +49,24 @@ class Products_Model extends CI_Model
 
 		return $query;
 	}
+	public function getSimilarOffers(){
 
+		$this->db->like('brand', $this->brand);
+		$this->db->or_where('subcategory', $this->subcategory);
+		$this->db->where('subcategory', $this->subcategory);
+		$this->db->or_where('brand', $this->brand);
+		$this->db->limit(12);
+		$get = $this->db->get('offers');
+		
+		return $get;
+	}
 	public function insertOffer(){
+		$category = $this->getCategoryBySubcategory();
 		$offerData = array(
 						'title'=>$this->title,
 						'description'=>$this->description,
-						'category'=>$this->category,
+						'category'=>$category,
+						'brand'=>$this->brand,
 						'subcategory'=>$this->subcategory,
 						'photo'=>$this->photo,
 						'current_price'=>$this->current_price
@@ -160,6 +173,11 @@ class Products_Model extends CI_Model
 		$result = $this->db->count_all_results();
 		return $result;
 	}
+	public function getCategoryBySubcategory(){
+		$get = $this->db->get_where('subcategories', array('subcategory'=>$this->subcategory))->row();
+
+		return $get->category;
+	}
 	public function editOffer(){
 		$actualQuantity = $this->getProductsQuantityById();
 		$previousPrice = $this->getOfferPriceById();
@@ -168,10 +186,12 @@ class Products_Model extends CI_Model
 		}
 		$inputedQuantity = $this->quantity;
 
+		$category = $this->getCategoryBySubcategory();
+
 		$dataToUpdate = array(
         'title' => $this->title,
         'description' => $this->description,
-		'category'=>$this->category,
+		'category'=>$category,
 		'subcategory'=>$this->subcategory,
 		'photo'=>$this->photo,
 		'current_price'=>$this->current_price,
@@ -267,5 +287,45 @@ class Products_Model extends CI_Model
 		if($this->db->update('products', $data)){
 			return TRUE;
 		}else return FALSE;
+	}
+
+	public function getAllSubcategories(){
+		$this->db->select('*');
+		$this->db->order_by('title');
+		$get = $this->db->get('subcategories');
+
+		return $get;
+	}
+
+	public function addVoteUp(){
+		$this->db->where('id', $this->offer_id);
+		$this->db->set('upvotes', '`upvotes`+ 1', FALSE);
+		if($this->db->update('offers')){
+			return TRUE;
+		}else return FALSE;
+
+	}
+	public function addVoteDown(){
+		$this->db->where('id', $this->offer_id);
+		$this->db->set('downvotes', '`downvotes`+ 1', FALSE);
+		if($this->db->update('offers')){
+			return TRUE;
+		}else return FALSE;
+
+	}
+	public function delVoteUp(){
+		$this->db->where('id', $this->offer_id);
+		$this->db->set('upvotes', '`upvotes`- 1', FALSE);
+		
+		if($this->db->update('offers')){
+			return TRUE;
+		}else return FALSE;
+	}
+	public function delVoteDown(){
+		$this->db->where('id', $this->offer_id);
+		$this->db->set('downvotes', '`downvotes`- 1', FALSE);
+		
+		if($this->db->update('offers')) return TRUE;
+		else return FALSE;
 	}
 }

@@ -29,4 +29,12 @@ class Todos_Model extends CI_Model
         }else return FALSE;
 
     }
+    public function addTodo(){
+
+        $this->db->set('content', $this->content);
+        $this->db->insert('todos');
+
+        
+        return $this->db->insert_id();
+    }
 }

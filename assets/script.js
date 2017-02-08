@@ -42,9 +42,10 @@ function getCartItems(url){
 }
 function delSelected(url){
 	var checked = [];
-	$("input:checkbox[name=check]:checked").each(function(){
-		checked.push($(this).val());
+	$(":checkbox:checked").each(function(i){
+		checked[i] = $(this).val();
 	});
+	console.log(checked);
 
 	var jsonString = JSON.stringify(checked);
 
@@ -77,16 +78,15 @@ function closePopupPhoto(){
 		$('.popupPhoto').css('display', 'none');
 	});
 }
-function delTodo(id, url){
-	console.log(id);
-	$.get( url+"usun_todo/"+id, function( data ) {
+function delTodo(id){
+	$.get( base_url+"usun_todo/"+id, function( data ) {
 		if(data!=1){
 			alert("Wystąpił błąd, nie udało się usunąć danych z bazy");
 		}else{
 			$('#todo-'+id).fadeOut(100);
 		}
 	}).fail(function() {
-    alert( "Wystąpił nieznany błąd");
+    	alert( "Wystąpił nieznany błąd");
   	});
 	
 	
@@ -310,7 +310,7 @@ $('#navUser').click(function(){
 
 function showForm(){
 	$('.navUserForm').css('height', '2px').css('display', 'block');
-	$('.navUserForm').animate({height: '110px'}, 100);
+	$('.navUserForm').animate({height: '115px'}, 100);
 }
 
 function hideForm(){
@@ -397,4 +397,20 @@ function testVal(){
 	else $('#offerTitleEx').html(title);
 	if(description=='') $('.offerDescription').html("Opis oferty");
 	else $('.offerDescription').html(description);
+}
+
+function addTodo(){
+	var todo = $('#todo').val();
+	if(todo!=''){
+		$.ajax({
+		type: "POST",
+		url: base_url +'addTodo',
+		data: {data: todo},
+		error: function(data) { alert(data); },
+		success: function(id) {
+			$('.todoNew').append("<div class='todoRow' id='todo-"+id+"'>"+ todo +"<div class='glyphicon glyphicon-ok todoOk' onclick=delTodo("+ id +")> </div> </div>" );
+			$('.stuffTodo').css('display', 'none');
+		}
+	});
+	}
 }

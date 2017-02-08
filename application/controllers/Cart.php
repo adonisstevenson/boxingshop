@@ -89,5 +89,11 @@ class Cart extends CI_Controller {
        }else echo "Nie ma co usuwać";
    }
 
+   public function buyProducts(){
+       foreach (array_combine($_POST['check'], $_POST['quantity']) as $check=>$quantity) {
+           echo $check." ".$quantity.'<br>';
+       }
+   }
+
 	
 }

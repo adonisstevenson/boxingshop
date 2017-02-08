@@ -186,21 +186,23 @@
             <header class="dashboardHeader stickToRight halfWidth">REJESTRACJA UŻYTKOWNIKÓW</header>
                 <div class="col-sm-4 todoBox" style="margin-top: 30px;">
                     <div class="todoRows">
-   
+                        <div class="todoNew">
+
+                        </div>
                     <?php if($todos->num_rows() > 0){ ?>
                         <?php foreach($todos->result() as $todo): ?>
                             <div class="todoRow" id=<?= 'todo-'.$todo->id ?>>
-                                <?= $todo->content ?>
-                                <div class="glyphicon glyphicon-ok todoOk" onclick="delTodo('<?= $todo->id ?>', '<?= base_url() ?>')"> </div>
+                               <div class="todo"> <?= $todo->content ?> </div>
+                                <div class="glyphicon glyphicon-ok todoOk" onclick="delTodo('<?= $todo->id ?>')"> </div>
                             </div>
                         <?php endforeach; ?>
                     <?php }else{ ?>
-                        <i>Nie ma żadnych rzeczy do zrobienia</i><br><br>
+                        <i class="stuffTodo">Nie ma żadnych rzeczy do zrobienia <br><br></i>
                     <?php } ?>
                     </div>
                     <div class="todoAdd">
-                       <textarea class="form-control" rows="3" id="comment" placeholder="Czego brakuje na stronie?"></textarea>
-                       <button class="btn btn-primary">+</button>
+                       <textarea class="form-control" rows="3" id="todo" placeholder="Czego brakuje na stronie?"></textarea>
+                       <button class="btn btn-primary" onclick="addTodo()">+</button>
                     </div>
                 </div>
                 <div class="col-sm-8 pollFirst">

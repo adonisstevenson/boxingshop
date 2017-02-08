@@ -23,6 +23,9 @@
       <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans+Condensed" rel="stylesheet">
+    <script>
+        var base_url = '<?= base_url() ?>'
+    </script>
 </head>
 <body>
 <div class="scrolltop">
@@ -64,13 +67,13 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Twój koszyk</h4>
             </div>
-            <form>
+            <form method="POST" action=<?= base_url().'koszyk_kup' ?>>
                 <div class="modal-body">
                 
                 </div>
                 <div class="modal-footer">
                     <center>
-                        <button type="button" class="btn" data-dismiss="modal" >Kup zaznaczone</button>
+                        <input type="submit" class="btn" value="Kup zaznaczone">
                         <button type="button" class="btn" data-dismiss="modal" onclick="delSelected('<?= base_url() ?>')">Usuń zaznaczone</button>
                     </center>
                 </div>

@@ -165,6 +165,12 @@ class Admin extends CI_Controller {
 			echo 0;
 		}else echo 1;
 	}
+	public function addTodo(){
+		$this->todos->content = $this->input->post('data');
+		$id = $this->todos->addTodo();
+
+		echo $id;
+	}
 
 	
 }

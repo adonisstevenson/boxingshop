@@ -70,5 +70,7 @@ $route['koszyk_usun']['post'] = 'Cart/deleteSelectedItems';
 $route['usun_todo/(:any)'] = 'Admin/delTodo/$1';
 $route['vote_up/(:num)'] = 'Offer/addVoteUp/$1';
 $route['vote_down/(:num)'] = 'Offer/addVoteDown/$1';
+$route['addTodo']['post'] = 'Admin/addTodo';
+$route['koszyk_kup']['post'] = 'Cart/buyProducts';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
